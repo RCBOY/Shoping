@@ -1,6 +1,8 @@
 package com.ztc.shop.SSHTest;
 
+import com.ztc.shop.model.Account;
 import com.ztc.shop.model.Category;
+import com.ztc.shop.service.AccountService;
 import com.ztc.shop.service.CategoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,8 +32,8 @@ public class SshTest {
     }
     @Test
     public void testHibernate(){
-        CategoryService categoryService=(CategoryService) ctx.getBean("CategoryServiceImp");
-        categoryService.save(new Category("男士服饰",false));
+        AccountService accountService=(AccountService) ctx.getBean("AccountServiceImp");
+        accountService.save(new Account("admin1","管理员","admin1"));
     }
     @Test
     public void testHibernateUpdate(){

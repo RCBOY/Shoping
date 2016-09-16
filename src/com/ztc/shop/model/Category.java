@@ -4,7 +4,7 @@ package com.ztc.shop.model;
  * Description：
  * Created by ZTCJoe on 2016/9/14.
  */
-public class Category {
+public class Category implements java.io.Serializable{
     private int id;
     private String type;
     private Boolean hot;
@@ -61,10 +61,7 @@ public class Category {
     }
 
     @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (hot != null ? hot.hashCode() : 0);
-        return result;
+    public String toString() {
+        return "Category [id="+id +"type"+type+"hot"+hot+"]";
     }
 }

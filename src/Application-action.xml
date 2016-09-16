@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
   <import resource="Application-service.xml"/>
-  <bean id="category" class="com.ztc.shop.model.Category"/>
+  <!--<bean id="category" class="com.ztc.shop.model.Category"/>-->
   <bean id="categoryClassAction" class="com.ztc.shop.action.CategoryClassAction" scope="prototype">
     <property name="categoryService" ref="CategoryServiceImp"></property>
   </bean>
