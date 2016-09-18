@@ -5,8 +5,16 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
     <package name="shop" extends="struts-default">
+
         <action name="Category_*" class="categoryClassAction" method="{1}">
             <result name="index">/seccuss.jsp</result>
+        </action>
+        <action name="Account_*" class="accountClassAction" method="{1}">
+            <result name="index">/index.jsp</result>
+        </action>
+        <!--用来完成系统请求转发的Action,所有的请求交给execute-->
+        <action name="Send_*_*" class="sendAction" >
+            <result name="send">/WEB-INF/{1}/{2}.jsp</result>
         </action>
     </package>
 </struts>

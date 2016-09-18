@@ -3,7 +3,10 @@ package com.ztc.shop.service.impl;
 import com.ztc.shop.service.BaseService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -12,19 +15,21 @@ import java.util.List;
  * Created by ZTCJoe on 2016/9/15.
  */
 @SuppressWarnings("unchecked")
+@Service("baseServiceImp")
+@Lazy(true)
 public class BaseServiceImp<T> implements BaseService<T> {
     //存储了当前操作的类型
     private Class clazz;
+    @Resource  //没有制定名称默认属性的名称与id捆绑
    private SessionFactory sessionFactory;
     protected Session getSession(){
         return  sessionFactory.getCurrentSession();
     }
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    //使用注解可以不使用set方法
+    //public void setSessionFactory(SessionFactory sessionFactory) {
+    //    this.sessionFactory = sessionFactory;
+    //}
     public BaseServiceImp(){
-        System.out.println("this代表当前构造方法的对象"+this);
-        System.out.println("获取当前对想的父类信息包（括泛型信息）"+this.getClass().getGenericSuperclass());
         ParameterizedType type=(ParameterizedType) this.getClass().getGenericSuperclass();
         clazz=(Class) type.getActualTypeArguments()[0];
     }
