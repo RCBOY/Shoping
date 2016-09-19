@@ -16,9 +16,16 @@ import java.util.List;
  * Created by ZTCJoe on 2016/9/14.
  */
 @SuppressWarnings("unchecked")
-@Service
+@Service("categoryService")
 public class CategoryServiceImp extends BaseServiceImp<Category> implements CategoryService{
     public CategoryServiceImp(){
         super();
+    }
+
+    @Override
+    public List<Category> queryJoinAccount(String type) {
+       return getSession().createQuery("FROM Category c where c.type=:type")
+                .setString("type","%"+type+"%")
+                .list();
     }
 }

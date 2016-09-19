@@ -8,7 +8,7 @@ public class Category implements java.io.Serializable{
     private int id;
     private String type;
     private Boolean hot;
-
+    private Account account;
     public Category(){
 
     }
@@ -44,6 +44,14 @@ public class Category implements java.io.Serializable{
 
     public void setHot(Boolean hot) {
         this.hot = hot;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

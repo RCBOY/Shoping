@@ -15,5 +15,9 @@
         <property name="hot">
             <column name="hot" sql-type="tinyint(1)" not-null="true"/>
         </property>
+        <!--lazy="false"级联属性关联对象-->
+        <many-to-one name="account" class="com.ztc.shop.model.Account" lazy="false">
+            <column name="aid"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

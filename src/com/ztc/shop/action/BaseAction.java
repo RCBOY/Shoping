@@ -2,11 +2,13 @@ package com.ztc.shop.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.ztc.shop.model.Category;
 import com.ztc.shop.service.AccountService;
 import com.ztc.shop.service.CategoryService;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.junit.Test;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

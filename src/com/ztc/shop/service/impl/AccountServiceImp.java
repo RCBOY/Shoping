@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * Created by ZTCJoe on 2016/9/14.
  */
 @SuppressWarnings("unchecked")
-@Service
+@Service("accountService")
 public class AccountServiceImp extends BaseServiceImp<Account> implements AccountService{
     public AccountServiceImp(){
         super();
