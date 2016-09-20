@@ -16,7 +16,13 @@
             <column name="hot" sql-type="tinyint(1)" not-null="true"/>
         </property>
         <!--lazy="false"级联属性关联对象-->
-        <many-to-one name="account" class="com.ztc.shop.model.Account" lazy="false">
+        <!--N+1问题：首先发出一条语句查询当前对象，然后发出N条语句查询关联对象，N不确定，所以效率比较低下-->
+        <!--lazy:是否加载关联对象如果为false则即使记载，fetch：什么样的方式加载关联对象可以选择select（默认）和join
+         select:就是N+1问题所在
+         在main-to-one的情况下：对join无效
+         解决方案：使用hql取代配置，可以提升性能
+        -->
+        <many-to-one name="account" class="com.ztc.shop.model.Account" >
             <column name="aid"/>
         </many-to-one>
     </class>

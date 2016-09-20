@@ -10,7 +10,6 @@ public class Category implements java.io.Serializable{
     private Boolean hot;
     private Account account;
     public Category(){
-
     }
     public Category(String type,Boolean hot){
         this.type=type;

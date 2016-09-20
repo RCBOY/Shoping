@@ -5,6 +5,7 @@ import com.ztc.shop.service.CategoryService;
 import com.ztc.shop.unit.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Description：模块自身的业务逻辑
+ * Description：书写Category模块自身的业务逻辑
  * Created by ZTCJoe on 2016/9/14.
  */
 @SuppressWarnings("unchecked")
@@ -22,10 +23,21 @@ public class CategoryServiceImp extends BaseServiceImp<Category> implements Cate
         super();
     }
 
+    //通过类别级联查询Account
     @Override
-    public List<Category> queryJoinAccount(String type) {
-       return getSession().createQuery("FROM Category c where c.type=:type")
+    public List<Category> queryJoinAccount(String type,int page,int size) {
+       return getSession().createQuery("FROM Category c left join fetch c.account where c.type like :type")
                 .setString("type","%"+type+"%")
+               .setFirstResult((page-1)*size)
+               .setMaxResults(size)
                 .list();
+    }
+
+    //根据关键字查询总记录数
+    @Override
+    public Long getCategoryCountbyType(String type) {
+        return (Long) getSession().createQuery("select count(c) FROM Category c where c.type like :type")
+                .setString("type","%"+type+"%")
+                .uniqueResult();
     }
 }

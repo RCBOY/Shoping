@@ -15,7 +15,7 @@ public class HibernateSessionFactory {
     private static org.hibernate.SessionFactory sessionFactory = null;
     private static Configuration configuration = null;
     private static ServiceRegistry serviceRegistry = null;
-
+    //静态块，在第一次加载时创建SessionFactory
     static {
         try {
             configuration = new Configuration().configure();
@@ -25,10 +25,10 @@ public class HibernateSessionFactory {
             e.printStackTrace();
         }
     }
-
     private HibernateSessionFactory() {
     }
 
+    //获取当前线程Session
     public static Session getSession() {
         Session session = threadLocal.get();
         if (session == null || !session.isOpen()) {
@@ -39,7 +39,7 @@ public class HibernateSessionFactory {
         }
         return session;
     }
-
+    //当当前线程SessionFactory不存在是调用此方法从新创建SessionFactory
     public static void rebuildSessionFactory() {
         try {
             configuration = new Configuration().configure();
@@ -51,6 +51,7 @@ public class HibernateSessionFactory {
             e.printStackTrace();
         }
     }
+    //关闭当前线程的session
     public static void closeSession(){
         Session session=threadLocal.get();
         threadLocal.set(null);
@@ -58,6 +59,7 @@ public class HibernateSessionFactory {
             session.close();
         }
     }
+    //返回一个SessionFactory
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

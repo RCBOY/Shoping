@@ -8,7 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="/public/head.jsp"%>
+    <script type="text/javascript">
+        $(function () {
+            $("#query").datagrid({
+
+            })
+        })
+    </script>
 </head>
 <body>
+<table id="query"></table>
 </body>
 </html>

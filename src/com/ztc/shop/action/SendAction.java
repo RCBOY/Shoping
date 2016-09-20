@@ -11,6 +11,5 @@ import org.springframework.stereotype.Controller;
 public class SendAction extends ActionSupport{
     public String execute(){
     return "send";
-
     }
 }

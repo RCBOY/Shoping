@@ -23,7 +23,7 @@
         }
         #menu ul li a{
             display: block;
-            background-color: #2b4490;
+            background-color: #426ab3;
             color: #fff;
             padding: 5px;
             text-decoration: none;

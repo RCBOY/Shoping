@@ -4,13 +4,17 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-    <package name="shop" extends="struts-default">
-
+    <!--开发模式在修改struts配置文件时不需要重启-->
+    <constant name="struts.devMode" value="true"/>
+    <package name="shop" extends="json-default">
         <action name="Category_*" class="categoryClassAction" method="{1}">
-            <result name="index">/seccuss.jsp</result>
+            <result name="index">/index.jsp</result>
+            <result name="">
+
+            </result>
         </action>
         <action name="Account_*" class="accountClassAction" method="{1}">
-            <result name="index">/index.jsp</result>
+            <result name="index">/sc.jsp</result>
         </action>
         <!--用来完成系统请求转发的Action,所有的请求交给execute-->
         <action name="Send_*_*" class="sendAction" >
