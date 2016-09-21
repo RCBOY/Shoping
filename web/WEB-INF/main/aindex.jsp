@@ -44,7 +44,7 @@
                    $("#tt").tabs("add",{
                        title:text,
                        closable:true,
-                       content:'<iframe src="Send_category_query.action" frameborder="0" width="100%" height="100%"/>'
+                       content:'<iframe title="类别管理" src="Send_category_query.action" frameborder="0" width="100%" height="100%"/>'
 //                       href:'Send_category_query.action'
                    });
                }
@@ -82,5 +82,7 @@
         </div>
     </div>
 </div>
+<div id="window" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true"/>
+<div id="updatewindow" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true"/>
 </body>
 </html>

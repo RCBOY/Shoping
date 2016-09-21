@@ -40,4 +40,11 @@ public class CategoryServiceImp extends BaseServiceImp<Category> implements Cate
                 .setString("type","%"+type+"%")
                 .uniqueResult();
     }
+
+    @Override
+    public void deleteByIds(String ids) {
+        String hql="DELETE FROM Category WHERE id in "+"("+ids+")";
+        getSession().createQuery(hql)
+                .executeUpdate();
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
@@ -23,9 +24,13 @@ import java.util.Map;
 @Controller
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T> {
+    //获取要删除的ids以及流
+    protected String ids;
+    protected InputStream inputStream;
+
     //分页分必要属性
     protected int page;
-    protected int size;
+    protected int rows;
     //用来存储分页返回数据
     protected  Map<String,Object> pageMap=null;
     //注入各种Map
@@ -42,6 +47,27 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
         super();
     }
 
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
+
+    public String getIds() {
+        return ids;
+    }
+
+    public Map<String, Object> getPageMap() {
+        System.out.println("---getPageMap----");
+        return pageMap;
+    }
+
     public void setPage(int page) {
         this.page = page;
     }
@@ -49,11 +75,13 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public int getPage() {
         return page;
     }
-    public void setSize(int size) {
-        this.size = size;
+
+    public void setRows(int rows) {
+        this.rows = rows;
     }
-    public int getSize() {
-        return size;
+
+    public int getRows() {
+        return rows;
     }
 
     //实现ModelDriven后需要实现getModel方法，以实现模型驱动

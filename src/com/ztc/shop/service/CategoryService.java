@@ -10,4 +10,6 @@ public interface CategoryService extends BaseService<Category>{
     public  List<Category> queryJoinAccount(String type,int page,int size);
     //根据关键字查询总记录数
     public  Long getCategoryCountbyType(String type);
+    //根据ids删除多条类别
+    public void deleteByIds(String ids);
 }

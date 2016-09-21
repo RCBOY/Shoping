@@ -9,8 +9,17 @@
     <package name="shop" extends="json-default">
         <action name="Category_*" class="categoryClassAction" method="{1}">
             <result name="index">/index.jsp</result>
-            <result name="">
-
+            <result name="JsonDataMap" type="json">
+                <!--要转换为json格式的数据-->
+                <param name="root">pageMap</param>
+                <!--配置不需要的选项,支持正则表达式-->
+                <param name="excludeProperties">
+                    rows\[\d+\]\.account.pass
+                    rows\[\d+\]\.account.name
+                </param>
+            </result>
+            <result name="Stream" type="stream">
+                <param name="inputName">inputStream</param>
             </result>
         </action>
         <action name="Account_*" class="accountClassAction" method="{1}">
