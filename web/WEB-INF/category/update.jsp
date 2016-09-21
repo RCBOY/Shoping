@@ -63,7 +63,7 @@
     </div>
     <div>
         <label for="account">所属管理员</label>
-        <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">
+        <select id="cc" class="easyui-combobox" name="account" style="width:200px;">
             <option value="aa">aitem1</option>
             <option>bitem2</option>
             <option>bitem3</option>
