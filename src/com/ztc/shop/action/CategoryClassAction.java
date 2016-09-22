@@ -40,4 +40,9 @@ public class CategoryClassAction extends BaseAction<Category> {
         inputStream =new ByteArrayInputStream("true".getBytes());
         return "Stream";
     }
+    public String update(){
+        categoryService.update(model);
+        inputStream =new ByteArrayInputStream("true".getBytes());
+        return "Stream";
+    }
 }

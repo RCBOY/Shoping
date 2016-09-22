@@ -18,7 +18,7 @@
 $(function(){
     $("[name=type]").validatebox({
         required:true,
-        invalidMessage:'对不起此类别已存在'
+        missingMessage:'请输入类别'
     });
     $("#submit").click(function(){
         $("#ff").form("enableValidation");
@@ -28,7 +28,7 @@ $(function(){
             success:function(result){
                 // 如果成功 则重置表单数据
                 parent.$("#window").window("close");
-                parent.$("iframe[title='类别管理']").get(0).contentWindow.$("#dg").datagrid("reload")
+                parent.$("iframe[title='类别管理']").get(0).contentWindow.$("#dg").datagrid("reload");
                 $("#ff").form("disableValidation");
                 $("#ff").form("reset");
             }
@@ -45,11 +45,12 @@ $(function(){
 <form id="ff" method="post">
     <div>
         <label for="type">类型</label>
-        <input class="easyui-validatebox" type="text" name="type" />
+        <input id="type" class="easyui-validatebox" type="text" name="type" />
     </div>
     <div>
         <label for="hot">热点</label>
-        是：<input  type="radio" name="hot" value="true" />
+        是：<input id="hot" type="radio" name="hot" value="true" />
+        <label for="hot">热点</label>
         否：<input  type="radio" name="hot" value="false"  checked="checked"/>
     </div>
     <div>

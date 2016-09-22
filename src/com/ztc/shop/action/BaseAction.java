@@ -3,8 +3,10 @@ package com.ztc.shop.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.ztc.shop.model.Category;
+import com.ztc.shop.model.Product;
 import com.ztc.shop.service.AccountService;
 import com.ztc.shop.service.CategoryService;
+import com.ztc.shop.service.ProductService;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.Resource;
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +36,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     protected int rows;
     //用来存储分页返回数据
     protected  Map<String,Object> pageMap=null;
+    //用于返回列表
+    protected List<T> jsonList=null;
     //注入各种Map
     protected Map<String,Object> request;
     protected Map<String,Object> application;
@@ -43,8 +48,14 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public CategoryService categoryService;
     @Resource
     public AccountService accountService;
+    @Resource
+    public ProductService productService;
     public BaseAction() {
         super();
+    }
+
+    public List<T> getJsonList() {
+        return jsonList;
     }
 
     public void setInputStream(InputStream inputStream) {

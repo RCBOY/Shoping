@@ -8,7 +8,6 @@
     <constant name="struts.devMode" value="true"/>
     <package name="shop" extends="json-default">
         <action name="Category_*" class="categoryClassAction" method="{1}">
-            <result name="index">/index.jsp</result>
             <result name="JsonDataMap" type="json">
                 <!--要转换为json格式的数据-->
                 <param name="root">pageMap</param>
@@ -23,7 +22,23 @@
             </result>
         </action>
         <action name="Account_*" class="accountClassAction" method="{1}">
-            <result name="index">/sc.jsp</result>
+            <result name="jsonDataList" type="json">
+                <param name="root">jsonList</param>
+                <param name="excludeProperties">
+                \[\d+\]\.pass,\[\d+\]\.name
+                </param>
+            </result>
+        </action>
+        <action name="Product_*" class="productClassAction" method="{1}" >
+            <result name="JsonProductDataMap" type="json">
+                <!--要转换为json格式的数据-->
+                <param name="root">pageMap</param>
+                <param name="excludeProperties">
+                    rows\[\d+\]\.category\.account,
+                    rows\[\d+\]\.date
+
+                </param>
+            </result>
         </action>
         <!--用来完成系统请求转发的Action,所有的请求交给execute-->
         <action name="Send_*_*" class="sendAction" >

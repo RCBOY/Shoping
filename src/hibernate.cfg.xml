@@ -18,6 +18,7 @@
 
         <mapping resource="com/ztc/shop/model/Category.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Account.hbm.xml"/>
+        <mapping resource="com/ztc/shop/model/Product.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

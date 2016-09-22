@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
+
 /**
  * Description：做转发
  * Created by ZTCJoe on 2016/9/14.
@@ -16,7 +18,11 @@ import org.springframework.stereotype.Controller;
 public class AccountClassAction extends BaseAction<Account> {
 
     public AccountClassAction() {
-
+    }
+    public String query(){
+        jsonList =new ArrayList<Account>();
+        jsonList=accountService.query();
+        return "jsonDataList";
     }
 
 
