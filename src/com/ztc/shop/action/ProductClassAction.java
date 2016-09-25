@@ -3,6 +3,8 @@ package com.ztc.shop.action;
 
 import com.ztc.shop.model.Category;
 import com.ztc.shop.model.Product;
+import org.aspectj.util.FileUtil;
+import org.hibernate.annotations.SourceType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -26,6 +28,16 @@ public class ProductClassAction extends BaseAction<Product> {
        Long count=productService.getProductCountbyName(model.getName());
         pageMap.put("rows",list);
         pageMap.put("total",count);
-        return "JsonProductDataMap";
+        return "JsonDataMap";
+    }
+    public void save() throws Exception{
+     String pic= fileUpload.uploadFile(fileImage);
+        model.setPic(pic);
+        productService.save(model);
+    }
+    public String deleteByIds(){
+        productService.deleteByIds(ids);
+        inputStream =new ByteArrayInputStream("true".getBytes());
+        return "Stream";
     }
 }

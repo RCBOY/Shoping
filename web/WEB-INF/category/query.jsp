@@ -139,7 +139,7 @@
                             }
                     )
                 },
-                prompt:'Please Input Value'
+                prompt:'请输入类型'
             });
         });
     </script>

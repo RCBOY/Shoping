@@ -23,7 +23,7 @@
                 textField:'login',
                 paneHeight:'auto',
                 editable:false,
-                paneWidth:200
+                paneWidth:200,
             });
             var dg=parent.$("iframe[title='类别管理']").get(0).contentWindow.$("#dg");
             var rows=dg.datagrid("getSelections");
@@ -68,7 +68,7 @@
     </div>
     <div>
         <label for="acc">管理员：</label>
-        <input id="acc" name="account.id">
+        <input id="acc" class="easyui-validatebox" name="account.id">
     </div>
     <div>
         <input type="hidden" name="id"/>

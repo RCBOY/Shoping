@@ -3,10 +3,12 @@ package com.ztc.shop.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.ztc.shop.model.Category;
+import com.ztc.shop.model.FileImage;
 import com.ztc.shop.model.Product;
 import com.ztc.shop.service.AccountService;
 import com.ztc.shop.service.CategoryService;
 import com.ztc.shop.service.ProductService;
+import com.ztc.shop.unit.FileUpload;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -27,6 +29,8 @@ import java.util.Map;
 @Controller
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T> {
+    //FileImage对象，封装了文件上传的属性
+    protected FileImage fileImage;
     //获取要删除的ids以及流
     protected String ids;
     protected InputStream inputStream;
@@ -50,8 +54,18 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public AccountService accountService;
     @Resource
     public ProductService productService;
+    @Resource
+    public FileUpload fileUpload;
     public BaseAction() {
         super();
+    }
+
+    public FileImage getFileImage() {
+        return fileImage;
+    }
+
+    public void setFileImage(FileImage fileImage) {
+        this.fileImage = fileImage;
     }
 
     public List<T> getJsonList() {

@@ -17,16 +17,25 @@
     <script type="text/javascript">
 
         $(function(){
+            $("#cate").combobox({
+                url:'Category_query.action',
+                panelHeight:"auto",
+                valueField:'id',
+                textField:'type',
+                paneHeight:'auto',
+                editable:false,
+                paneWidth:200,
+                required:true,
+                missingMessage:"情选择所属类型"
+            });
             $.extend($.fn.validatebox.defaults.rules,{
                 format:{
                     validator: function (value, param) {
                         var  ext=value.substring(value.lastIndexOf('.')+1);
                         var arr=param[0].split(',');
                         for(var i=0;i<arr.length;i++){
-                            if (ext==arr[i]){
-                                alert("uuu");
+                            if(ext==arr[i])
                                 return true;
-                            }
                         }
                         return false;
                     },
@@ -43,6 +52,10 @@
                 min:0,
                 precision:0
             });
+            $("textarea[name=remark]").validatebox({
+                required:true,
+                missingMessage:'商品简介不能为空'
+            })
             $('#price').numberbox({
                 required:true,
                 missingMessage:'价格不能为空',
@@ -50,12 +63,12 @@
                 precision:2,
                 prefix:'￥'
             });
-            $('input[name=upload]').validatebox({
+            $('input[name="fileImage.upload"]').validatebox({
 //                required:true,
 //                missingMessage:'请上传商品文件',
-                validType:"format['gif,gpg,jpeg,png']"
+                validType:'format["gif,jpg,jpeg,png"]'
             });
-            $('input[name=upload]').change(function () {
+            $('input[name="fileImage.upload"]').change(function () {
                 $(this).validatebox("validate");
             });
 
@@ -63,7 +76,7 @@
                 $("#ff").form("enableValidation");
                 // 默认是ajax提交,提交之前会自动进行表达验证
                 $('#ff').form('submit', {
-                    url:'Category_save.action',
+                    url:'Product_save.action',
                     success:function(result){
                         // 如果成功 则重置表单数据
                         parent.$("#window").window("close");
@@ -76,28 +89,28 @@
             $("#reset").click(function(){
                 $("#ff").form("reset");
             });
-//            $("#ff").form("disableValidation");
+            $("#ff").form("disableValidation");
         });
     </script>
 </head>
 <body>
 <form title="添加商品" id="ff" method="post" enctype="multipart/form-data">
     <div>
-        <label>商品名称:</label> <input  type="text" name="name" />
+        <label>商品名称:</label> <input class="easyui-validatebox" type="text" name="name" />
     </div>
     <div>
-        <label>商品价格:</label> <input id="price" type="text" name="price" />
+        <label>商品价格:</label> <input id="price" class="easyui-validatebox" type="text" name="price" />
     </div>
     <div>
-        <label>商品数量:</label> <input id="count" type="text" name="count" />
+        <label>商品数量:</label> <input id="count" class="easyui-validatebox" type="text" name="count" />
     </div>
     <div>
-        <label>图片上传:</label> <input type="file" name="upload" />
+        <label>图片上传:</label> <input class="easyui-validatebox" type="file" name="fileImage.upload" />
     </div>
     <div>
         <label>所属类别：</label>
-        <select id="cc" name="category.id">
-        </select>
+        <input id="cate" name="category.id">
+
     </div>
     <div>
         <label>加入推荐:</label> 推荐:<input type="radio" name="commend"
@@ -112,7 +125,7 @@
     </div>
     <div>
         <label>简单描述:</label>
-        <textarea name="remark" cols="40" rows="4"></textarea>
+        <textarea class="easyui-validatebox" name="remark" cols="40" rows="4"></textarea>
     </div>
     <div>
         <label>详细描述:</label>

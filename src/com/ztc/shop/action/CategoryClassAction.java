@@ -1,6 +1,7 @@
 package com.ztc.shop.action;
 
 
+import com.ztc.shop.model.Account;
 import com.ztc.shop.model.Category;
 
 import org.springframework.context.annotation.Scope;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,5 +46,10 @@ public class CategoryClassAction extends BaseAction<Category> {
         categoryService.update(model);
         inputStream =new ByteArrayInputStream("true".getBytes());
         return "Stream";
+    }
+    public String query(){
+        jsonList =new ArrayList<Category>();
+        jsonList=categoryService.query();
+        return "jsonDataList";
     }
 }

@@ -16,14 +16,28 @@
     <context:component-scan base-package="com.ztc.shop" />
    <context:annotation-config></context:annotation-config>
     <!-- 导入资源文件 -->
-    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <!--<context:property-placeholder location="db.properties"></context:property-placeholder>-->
+    <bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+               <value>classpath:db.properties</value>
+            </array>
+        </property>
+    </bean>
+    <!--此类支持注解方式注入资源-->
+    <bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <array>
+               <value>classpath:public.properties</value>
+            </array>
+        </property>
+    </bean>
     <!--配置c3p0数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${Hibernate.driverClass}"/>
         <property name="jdbcUrl" value="${Hibernate.jdbcUrl}"/>
         <property name="user" value="${Hibernate.user}"/>
         <property name="password" value="${Hibernate.password}"/>
-
         <property name="initialPoolSize" value="${Hibernate.initPoolSize}"></property>
         <property name="maxPoolSize" value="${Hibernate.maxPoolSize}"></property>
     </bean>

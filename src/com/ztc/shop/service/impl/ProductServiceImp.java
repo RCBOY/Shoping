@@ -32,6 +32,11 @@ public class ProductServiceImp extends BaseServiceImp<Product> implements Produc
                 .setMaxResults(size)
                 .list();
     }
+    public void deleteByIds(String ids) {
+        String hql="DELETE FROM Product WHERE id in "+"("+ids+")";
+        getSession().createQuery(hql)
+                .executeUpdate();
+    }
 
     @Override
     public Long getProductCountbyName(String type) {
@@ -40,8 +45,4 @@ public class ProductServiceImp extends BaseServiceImp<Product> implements Produc
                 .uniqueResult();
     }
 
-    @Override
-    public void deleteByIds(String ids) {
-
-    }
 }

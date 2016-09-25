@@ -15,8 +15,8 @@ public class Product {
     private String remark;
     private String xremark;
     private Timestamp date;
-    private Byte commend;
-    private Byte open;
+    private boolean commend;
+    private boolean open;
     private Integer count;
     private Category category;
 
@@ -76,19 +76,19 @@ public class Product {
         this.date = date;
     }
 
-    public Byte getCommend() {
+    public boolean getCommend() {
         return commend;
     }
 
-    public void setCommend(Byte commend) {
+    public void setCommend(boolean commend) {
         this.commend = commend;
     }
 
-    public Byte getOpen() {
+    public boolean getOpen() {
         return open;
     }
 
-    public void setOpen(Byte open) {
+    public void setOpen(boolean open) {
         this.open = open;
     }
 
@@ -115,7 +115,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return super.toString();
+        return pic;
     }
 
     @Override

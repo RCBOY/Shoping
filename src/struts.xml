@@ -20,6 +20,13 @@
             <result name="Stream" type="stream">
                 <param name="inputName">inputStream</param>
             </result>
+            <result name="jsonDataList" type="json">
+                <param name="root">jsonList</param>
+                <param name="excludeProperties">
+                    \[\d+\]\.account,
+                    \[\d+\]\.hot
+                </param>
+            </result>
         </action>
         <action name="Account_*" class="accountClassAction" method="{1}">
             <result name="jsonDataList" type="json">
@@ -30,14 +37,16 @@
             </result>
         </action>
         <action name="Product_*" class="productClassAction" method="{1}" >
-            <result name="JsonProductDataMap" type="json">
+            <result name="JsonDataMap" type="json">
                 <!--要转换为json格式的数据-->
                 <param name="root">pageMap</param>
                 <param name="excludeProperties">
                     rows\[\d+\]\.category\.account,
                     rows\[\d+\]\.date
-
                 </param>
+            </result>
+            <result name="Stream" type="stream">
+                <param name="inputName">inputStream</param>
             </result>
         </action>
         <!--用来完成系统请求转发的Action,所有的请求交给execute-->

@@ -15,6 +15,11 @@
         <property name="show_sql">true</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/Shop</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--启用二级缓存-->
+        <property name="cache.use_second_level_cache">true</property>
+        <!--配置二级缓存要使用的产品-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
 
         <mapping resource="com/ztc/shop/model/Category.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Account.hbm.xml"/>

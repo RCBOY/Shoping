@@ -104,7 +104,7 @@
                         }
                     }
                 },'-',{
-                    text:"<input id='search' name='type' />"
+                    text:"<input id='search' name='name' />"
                 }],
                 columns:[[
                     {field:'zz',checkbox:'true',width:200,align:'right'},
@@ -125,11 +125,11 @@
                 searcher:function(value,name){
                     $('#dg').datagrid(
                             'load',{
-                                type:value
+                                name:value
                             }
                     )
                 },
-                prompt:'Please Input Value'
+                prompt:'请输入商品名称'
             });
         });
     </script>
