@@ -1,8 +1,6 @@
 package com.ztc.shop.service.impl;
 
-import com.ztc.shop.model.Category;
 import com.ztc.shop.model.Product;
-import com.ztc.shop.service.CategoryService;
 import com.ztc.shop.service.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +41,16 @@ public class ProductServiceImp extends BaseServiceImp<Product> implements Produc
         return (Long) getSession().createQuery("select count(p) FROM Product p where p.name like :name")
                 .setString("name","%"+type+"%")
                 .uniqueResult();
+    }
+
+    @Override
+    public List<Product> queryByHotCid(int cid) {
+        String hql="FROM Product p JOIN FETCH p.category WHERE p.commend=true AND p.open=true AND p.category.id=:cid ORDER BY p.date DESC";
+        return getSession().createQuery(hql)//
+               .setInteger("cid",cid)//
+                .setFirstResult(0)//
+                .setMaxResults(3)//
+                .list();
     }
 
 }

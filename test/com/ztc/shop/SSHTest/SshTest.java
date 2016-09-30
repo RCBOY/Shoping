@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,8 +56,40 @@ public class SshTest {
         productService = applicationContext.getBean(ProductService.class);
       for(Product product:productService.queryJoinCategory("",1,100)){
           //product.getCategory().setAccount(null);
-          System.out.println(JSONSerializer.toJSON(product));
+          //System.out.println(JSONSerializer.toJSON(product));
+          System.out.println(product);
       }
 
     }
-}
+    @Test
+    public void test5(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        productService = applicationContext.getBean(ProductService.class);
+        productService.delete(4);
+    }
+    @Test
+    public void  text6(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        productService = applicationContext.getBean(ProductService.class);
+        Product product= productService.get(2);
+        product.setId(110);
+        product.setPic("jjj");
+        productService.save(product);
+    }
+    @Test
+    public void  text7(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        productService = applicationContext.getBean(ProductService.class);
+        categoryService=applicationContext.getBean(CategoryService.class);
+        //首先查出热点类别
+        for(Category category: categoryService.queryByhot(true)) {
+            //根据热点类别查出相应的产品
+            System.out.println(productService.queryByHotCid(category.getId()));
+        }
+
+    }
+    }
+

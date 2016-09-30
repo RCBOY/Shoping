@@ -5,6 +5,7 @@ package com.ztc.shop.model;
  * Created by ZTCJoe on 2016/9/14.
  */
 public class Category implements java.io.Serializable{
+    private static final long serialVersionUID = 3181917162550702256L;
     private int id;
     private String type;
     private Boolean hot;

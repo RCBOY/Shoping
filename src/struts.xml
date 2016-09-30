@@ -37,6 +37,7 @@
             </result>
         </action>
         <action name="Product_*" class="productClassAction" method="{1}" >
+            <result name="test">index.jsp</result>
             <result name="JsonDataMap" type="json">
                 <!--要转换为json格式的数据-->
                 <param name="root">pageMap</param>
@@ -48,6 +49,22 @@
             <result name="Stream" type="stream">
                 <param name="inputName">inputStream</param>
             </result>
+            <result name="detail">
+                /detail.jsp
+            </result>
+        </action>
+        <action name="Size_*" class="sizeClassAcion" method="{1}">
+            <result name="jsonDataList" type="json">
+                <param name="root">jsonList</param>
+            </result>
+        </action>
+        <action name="Color_*" class="colorClassAction" method="{1}">
+            <result name="jsonDataList" type="json">
+                <param name="root">jsonList</param>
+            </result>
+        </action>
+        <action name="Soder_*" class="soderAction" method="{1}">
+            <result name="showCar" type="redirect">/cart.jsp</result>
         </action>
         <!--用来完成系统请求转发的Action,所有的请求交给execute-->
         <action name="Send_*_*" class="sendAction" >

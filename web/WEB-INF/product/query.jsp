@@ -110,9 +110,14 @@
                     {field:'zz',checkbox:'true',width:200,align:'right'},
                     {field:'id',title:'编号',width:200},
                     {field:'name',title:'商品名称',width:200},
+                    {field:'star',title:'推荐指数',width:200},
                     {field:'count',title:'商品数量',width:200},
+                    {field:'size',title:'商品尺寸',width:200},
+                    {field:'color',title:'商品颜色',width:200},
                     {field:'price',title:'价格',width:200,align:'right'},
-                    {field:'remark',title:'简单介绍',width:200,align:'left'},    		         {field:'type',title:'所属类别',width:200,align:'right',
+                    {field:'discount',title:'折扣',width:200,align:'right'},
+                    {field:'remark',title:'简单介绍',width:200,align:'left'},
+                    {field:'type',title:'所属类别',width:200,align:'right',
                         formatter: function(value,row,index){
                             if(row.category!=null)
                                 return row.category.type;

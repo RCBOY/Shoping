@@ -14,7 +14,10 @@
         <property name="price">
             <column name="price" sql-type="decimal(8,2)" precision="8" scale="2" not-null="true"/>
         </property>
-        <property name="pic">
+        <property name="newprice">
+            <column name="newprice" sql-type="decimal(8,2)" precision="8" scale="2" not-null="false"/>
+        </property>
+        <property name="pic" >
             <column name="pic" sql-type="varchar(200)" length="200" not-null="true"/>
         </property>
         <property name="remark">
@@ -32,11 +35,23 @@
         <property name="open">
             <column name="open" sql-type="tinyint(1)" not-null="true"/>
         </property>
-        <many-to-one name="category" class="com.ztc.shop.model.Category" >
+        <many-to-one name="category" class="com.ztc.shop.model.Category" lazy="false" >
             <column name="cid"/>
         </many-to-one>
+        <property name="size">
+            <column name="size" sql-type="varchar(50)" length="50" not-null="true" />
+        </property>
+        <property name="color">
+            <column name="color" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
         <property name="count">
             <column name="count" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="discount">
+            <column name="discount" sql-type="int(11)" not-null="false"/>
+        </property>
+        <property name="star">
+            <column name="star" sql-type="int(11)" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

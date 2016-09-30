@@ -2,17 +2,12 @@ package com.ztc.shop.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.ztc.shop.model.Category;
 import com.ztc.shop.model.FileImage;
-import com.ztc.shop.model.Product;
-import com.ztc.shop.service.AccountService;
-import com.ztc.shop.service.CategoryService;
-import com.ztc.shop.service.ProductService;
+import com.ztc.shop.service.*;
 import com.ztc.shop.unit.FileUpload;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
-import org.junit.Test;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -54,6 +49,14 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public AccountService accountService;
     @Resource
     public ProductService productService;
+    @Resource
+    public SizeService sizeService;
+    @Resource
+    public ColorService colorService;
+    @Resource
+    public ForderService forderService;
+    @Resource
+    public  SorderService sorderService;
     @Resource
     public FileUpload fileUpload;
     public BaseAction() {

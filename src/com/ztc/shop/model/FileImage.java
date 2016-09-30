@@ -1,12 +1,14 @@
 package com.ztc.shop.model;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Description：文件上传功能的基本属性
  * Created by ZTCJoe on 2016/9/23.
  */
-public class FileImage {
+public class FileImage implements Serializable {
+    private static final long serialVersionUID = -7128626006467174826L;
     private File file;
     private String contentType;
     private String filename;

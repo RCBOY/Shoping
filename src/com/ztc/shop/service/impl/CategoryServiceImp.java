@@ -47,4 +47,12 @@ public class CategoryServiceImp extends BaseServiceImp<Category> implements Cate
         getSession().createQuery(hql)
                 .executeUpdate();
     }
+
+    @Override
+    public List<Category> queryByhot(boolean hot) {
+        String hql="FROM Category c JOIN FETCH c.account WHERE c.hot=:hot";
+       return getSession().createQuery(hql)
+                .setBoolean("hot",true)
+                .list();
+    }
 }

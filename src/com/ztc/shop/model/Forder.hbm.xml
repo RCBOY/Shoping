@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ztc.shop.model.Forder" table="forder" schema="shop">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="remark">
+            <column name="remark" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="date">
+            <column name="date" sql-type="timestamp"/>
+        </property>
+        <property name="total">
+            <column name="total" sql-type="decimal(8,2)" precision="8" scale="2" not-null="true"/>
+        </property>
+        <property name="post">
+            <column name="post" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <many-to-one name="address" class="com.ztc.shop.model.Address">
+            <column name="adid"/>
+        </many-to-one>
+        <many-to-one name="status" class="com.ztc.shop.model.Status" >
+            <column name="sid"/>
+        </many-to-one>
+        <many-to-one name="user" class="com.ztc.shop.model.User" >
+            <column name="uid"/>
+        </many-to-one>
+        <set name="sorderSet">
+            <!--代表的是外键-->
+            <key>
+                <column name="fid"/>
+            </key>
+            <one-to-many class="com.ztc.shop.model.Sorder"/>
+        </set>
+    </class>
+</hibernate-mapping>

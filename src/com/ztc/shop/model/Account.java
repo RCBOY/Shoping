@@ -1,10 +1,13 @@
 package com.ztc.shop.model;
 
+import java.io.Serializable;
+
 /**
  * Description：
  * Created by ZTCJoe on 2016/9/15.
  */
-public class Account {
+public class Account implements Serializable {
+    private static final long serialVersionUID = 3675787486287448514L;
     private int id;
     private String login;
     private String name;

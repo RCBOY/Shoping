@@ -16,7 +16,7 @@ import java.util.UUID;
  */
 @Component("fileUpload")
 public class FileUploadUtil implements com.ztc.shop.unit.FileUpload {
-    String filePath="C:/ShopWeb/";
+    String filePath="";
     @Value("#{prop.filePath}")
     //    通过文件名获取扩展
     public void setFilePath(String filePath) {

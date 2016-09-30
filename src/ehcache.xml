@@ -12,7 +12,7 @@
     <!--  
     	如果缓存溢出，指定一个目录：当 EHCache 把数据写到硬盘上时, 将把数据写到这个目录下.
     -->     
-    <diskStore path="d:\\tempDirectory"/>
+    <diskStore path="C:\Users\1234ztc\IdeaProjects\ShopingWeb\web\cache"/>
 
 
     <!--Default Cache configuration. These will applied to caches programmatically created through
