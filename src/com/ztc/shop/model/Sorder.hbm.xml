@@ -7,6 +7,7 @@
     <class name="com.ztc.shop.model.Sorder" table="sorder" schema="shop">
         <id name="id">
             <column name="id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <property name="name">
             <column name="name" sql-type="varchar(20)" length="20" not-null="true"/>

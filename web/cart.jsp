@@ -9,50 +9,36 @@
 <html>
 <head>
     <%@include file="/public/head.jsp"%>
-    <%@include file="htmlhead.jsp"%>
+    <%@include file="public/htmlhead.jsp"%>
+    <script type="text/javascript">
+        $(function () {
+//            注册时间
+            $(".span1").change(function () {
+//                验证数据有效性,必须大于0
+                var number=this.value;
+                if(!isNaN(number)&&parseInt(number)==number&&number>0){
+                    $(this).attr("lang",number);
+                    var pid=$(this).parents("tr:first").attr("lang");
+//                    发送ajax请求，传输当前的数量与商品的id返回的总价
+                    $.post("Sorder_updateSorder.action",{number:number,'product.id':pid},function (total) {
+                        $("#total").html("￥" + parseFloat(total).toFixed(2));
+                    },"text")
+//                        更新单个商品的小计
+                    var price=$(this).parent().prev().html();
+                    price=price.substring(1);
+//                     xxxx.toFixed(2) 对指定的数保留两位小树, 支持四舍五入
+                   $(this).parent().next().html("￥" + parseFloat(price*number).toFixed(2));
+
+                }else {
+                    this.value=$(this).attr("lang");
+                }
+            })
+        })
+    </script>
 </head>
 <body>
 <!-- Header Start -->
-<header>
-    <div class="headerstrip">
-        <div class="container">
-            <div class="row">
-                <div class="span12">
-                    <a href="index-2.html" class="logo pull-left"><img src="img/logo.png" alt="SimpleOne" title="SimpleOne"></a>
-                    <!-- Top Nav Start -->
-                    <div class="pull-left">
-                        <div class="navbar" id="topnav">
-                            <div class="navbar-inner">
-                                <ul class="nav" >
-                                    <li><a class="home active" href="#">Home</a>
-                                    </li>
-                                    <li><a class="myaccount" href="#">My Account</a>
-                                    </li>
-                                    <li><a class="shoppingcart" href="#">Shopping Cart</a>
-                                    </li>
-                                    <li><a class="checkout" href="#">CheckOut</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Top Nav End -->
-                    <div class="pull-right">
-                        <form class="form-search top-search">
-                            <input type="text" class="input-medium search-query" placeholder="搜索产品…">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="headerdetails">
-        </div>
-    </div>
-</header>
-<!-- Header End -->
-
+<%@include file="/public/header.jsp"%>
 <div id="maincontainer">
     <section id="product">
         <div class="container">
@@ -73,36 +59,38 @@
                         <th class="image" colspan="2">商品名称</th>
                         <%--<th class="name">产品名称</th>--%>
                         <th class="model">产品简介</th>
-                        <th class="quantity">数量</th>
+                        <th class="quantity">单价</th>
+                        <th class="price">数量</th>
+                        <th class="total">小计</th>
                         <th class="discount">折扣</th>
                         <th class="total">操作</th>
-                        <th class="price">单价</th>
-                        <th class="total">小计</th>
                     </tr>
                    <c:forEach items="${sessionScope.forder.sorderSet}" var="sorder"  varStatus="num">
-                    <tr>
+                    <tr lang="${sorder.product.id}">
                         <td class="id">${num.count}</td>
                         <td class="image" colspan="2">
                             <a href="#">
-                                <img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50">
+                                <img title="product" alt="product" src="${shop}/Images/${sorder.product.pic}" height="50" width="50">
                             </a>
                             <a href="#">${sorder.name}</a>
                         </td>
                         <td class="model">${sorder.product.remark}</td>
+                        <td class="price">￥${sorder.price}</td>
                         <td class="quantity">
-                            <input type="text" size="2" value="${sorder.number}" name="quantity[40]" class="span1">
+                            <input type="text" size="2" value="${sorder.number}" name="quantity[40]" class="span1" lang="${sorder.number}">
                         </td>
+                        <td class="total" id="littletotal">￥${sorder.price*sorder.number}</td>
                         <td class="discount">${sorder.product.discount/10}折</td>
                         <td class="total">
                             <a href="#"><img class="tooltip-test" data-original-title="修改" src="img/update.png" alt=""></a>
                             <a href="#"><img class="tooltip-test" data-original-title="移除"  src="img/remove.png" alt=""></a>
                         </td>
-                        <td class="price">${sorder.price}</td>
-                        <td class="total">${sorder.price*sorder.number}</td>
+
                     </tr>
                   </c:forEach>
                 </table>
             </div>
+            <%--暂时无用--%>
             <div class="cartoptionbox">
                 <h4 class="heading4"> Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost. </h4>
                 <input type="radio" class="radio">
@@ -133,6 +121,7 @@
                     </fieldset>
                 </form>
             </div>
+            <%--暂时无用--%>
             <div class="container">
                 <div class="pull-right">
                     <div class="span4 pull-right">
@@ -151,12 +140,12 @@
                             </tr>
                             <tr>
                                 <td><span class="extra bold totalamout">总计 :</span></td>
-                                <td><span class="bold totalamout">${sessionScope.forder.total}</span></td>
+                                <td><span class="bold totalamout" id="total">￥${sessionScope.forder.total}</span></td>
                             </tr>
                         </table>
                         <%--<input type="submit" value="结账" class="btn btn-orange pull-right">--%>
                         <button class="btn btn-orange pull-right">
-                            <font><a href="${shop}/">结确认订单</a></font>
+                            <font><a href="${shop}/user/confirm.jsp">确认订单</a></font>
                         </button>
                         <button class="btn btn-orange pull-right mr10">
                             <font><a href="#">继续购物</a></font>
@@ -167,6 +156,6 @@
         </div>
     </section>
 </div>
-<%@include file="htmlfooter.jsp"%>
+<%@include file="public/htmlfooter.jsp"%>
 </body>
 </html>

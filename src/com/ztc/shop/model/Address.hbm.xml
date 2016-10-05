@@ -7,6 +7,7 @@
     <class name="com.ztc.shop.model.Address" table="address" schema="shop">
         <id name="id">
             <column name="id" sql-type="int(11)"/>
+            <generator class="native" />
         </id>
         <many-to-one name="user" class="com.ztc.shop.model.User">
             <column name="uid"></column>

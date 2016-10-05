@@ -63,9 +63,9 @@
                  <li><a href="#" title="Send_product_query.action">商品管理</a> </li>
              </ul>
         </div>
-        <div title="基本操作" data-options="iconCls:'icon-reload',selected:true" >
+        <div title="销售管理" data-options="iconCls:'icon-reload',selected:true" >
             <ul>
-                <li><a href="#">类别管理</a> </li>
+                <li><a href="#" title="Send_sale_sale.action">销售报表</a> </li>
                 <li><a href="#">商品管理</a> </li>
             </ul>
         </div>

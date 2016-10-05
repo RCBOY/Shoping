@@ -4,7 +4,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.ztc.shop.model.FileImage;
 import com.ztc.shop.service.*;
+import com.ztc.shop.unit.EmailUtil;
 import com.ztc.shop.unit.FileUpload;
+import com.ztc.shop.unit.MessageUtil;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -24,13 +26,13 @@ import java.util.Map;
 @Controller
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T> {
-    //FileImage对象，封装了文件上传的属性
+    //获取FileImage对象，封装了文件上传的属性
     protected FileImage fileImage;
     //获取要删除的ids以及流
     protected String ids;
     protected InputStream inputStream;
 
-    //分页分必要属性
+    //获取分页分必要属性
     protected int page;
     protected int rows;
     //用来存储分页返回数据
@@ -42,7 +44,7 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     protected Map<String,Object> application;
     protected Map<String,Object> session;
     protected T model;
-    //注入categoryService，accountService
+    //Service的注入
     @Resource
     public CategoryService categoryService;
     @Resource
@@ -58,7 +60,18 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     @Resource
     public  SorderService sorderService;
     @Resource
+    public  UserService userService;
+    @Resource
+    public AddressService addressService;
+    @Resource
+    public PayService payService;
+    @Resource
     public FileUpload fileUpload;
+    @Resource
+    public EmailUtil emailUtil;
+    @Resource
+    public MessageUtil messageUtil;
+    // 构造器
     public BaseAction() {
         super();
     }
@@ -92,7 +105,6 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     }
 
     public Map<String, Object> getPageMap() {
-        System.out.println("---getPageMap----");
         return pageMap;
     }
 

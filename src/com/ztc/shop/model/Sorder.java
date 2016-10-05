@@ -9,18 +9,18 @@ import java.math.BigDecimal;
  */
 public class Sorder implements Serializable {
     private static final long serialVersionUID = 6882479691209033429L;
-    private int id;
+    private Integer id;
     private String name;
     private Double price;
     private Integer number;
     private Product product;
     private Forder forder;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -83,12 +83,11 @@ public class Sorder implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + number;
-        result = 31 * result + (product != null ? product.hashCode() : 0);
-        result = 31 * result + (forder != null ? forder.hashCode() : 0);
-        return result;
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+      return   "Sorder [id="+id +"name="+name+"price="+price+"number="+number+"product="+product+"forder="+forder+"]";
     }
 }

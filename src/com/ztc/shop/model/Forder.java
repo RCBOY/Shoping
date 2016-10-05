@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Set;
  */
 public class Forder implements java.io.Serializable{
     private static final long serialVersionUID = 3139431141583104591L;
-    private int id;
+    private Integer id;
     private String remark;
     private Timestamp date;
     private Double total;
@@ -40,11 +41,11 @@ public class Forder implements java.io.Serializable{
         this.sorderSet = sorders;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -125,7 +126,7 @@ public class Forder implements java.io.Serializable{
 
     @Override
     public int hashCode() {
-        int result = id;
+        Integer result = id;
         result = 31 * result + (remark != null ? remark.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (total != null ? total.hashCode() : 0);
@@ -134,5 +135,10 @@ public class Forder implements java.io.Serializable{
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return   "Forder [id="+id +"remark"+remark+"date"+date+"total"+total+"post"+post+"address"+address+"status"+status+"user"+user+"]";
     }
 }

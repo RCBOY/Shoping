@@ -12,10 +12,12 @@
 	    http://www.springframework.org/schema/context/spring-context.xsd
 	    http://www.springframework.org/schema/aop
 	    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
     <!--使用注解开启包扫描-->
     <context:component-scan base-package="com.ztc.shop" />
-   <context:annotation-config></context:annotation-config>
-    <!-- 导入资源文件 -->
+    <context:annotation-config></context:annotation-config>
+
+    <!-- 导入数据库资源配置文件 -->
     <!--<context:property-placeholder location="db.properties"></context:property-placeholder>-->
     <bean  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -24,14 +26,18 @@
             </array>
         </property>
     </bean>
-    <!--此类支持注解方式注入资源-->
+
+    <!--支持注解方式注入的资源-->
     <bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <array>
                <value>classpath:public.properties</value>
+               <value>classpath:pay.properties</value>
+               <value>classpath:send.properties</value>
             </array>
         </property>
     </bean>
+
     <!--配置c3p0数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${Hibernate.driverClass}"/>
@@ -41,6 +47,7 @@
         <property name="initialPoolSize" value="${Hibernate.initPoolSize}"></property>
         <property name="maxPoolSize" value="${Hibernate.maxPoolSize}"></property>
     </bean>
+
     <!--配置sessionFactory-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -61,6 +68,7 @@
             <tx:method name="*" propagation="SUPPORTS"/>
         </tx:attributes>
     </tx:advice>
+
     <!--  配置事务切入点, 以及把事务切入点和事务属性关联起来 -->
     <aop:config>
         <aop:pointcut expression="execution(* com.ztc.shop.service.impl.*.*(..))"

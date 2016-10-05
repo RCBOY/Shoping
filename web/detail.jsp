@@ -9,104 +9,11 @@
 <html>
 <head>
    <%@include file="/public/head.jsp"%>
-   <%@include file="/htmlhead.jsp"%>
+   <%@include file="/public/htmlhead.jsp"%>
 </head>
 <body>
 <!-- Header Start -->
-<header>
-    <div class="headerstrip">
-        <div class="container">
-
-            <div class="row">
-                <div class="span12">
-                    <a href="#" class="logo pull-left"><img src="img/logo.png" alt="SimpleOne" title="SimpleOne"></a>
-                    <!-- Top Nav Start -->
-                    <div class="pull-left">
-                        <div class="navbar" id="topnav">
-                            <div class="navbar-inner">
-                                <ul class="nav" >
-                                    <li><a class="home active" href="#">Home</a>
-                                    </li>
-                                    <li><a class="myaccount" href="#">My Account</a>
-                                    </li>
-                                    <li><a class="shoppingcart" href="#">Shopping Cart</a>
-                                    </li>
-                                    <li><a class="checkout" href="#">CheckOut</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Top Nav End -->
-                    <div class="pull-right">
-                        <form class="form-search top-search">
-                            <input type="text" class="input-medium search-query" placeholder="搜索商品…">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="headerdetails">
-            <div class="pull-right">
-                <ul class="nav topcart pull-left">
-                    <li class="dropdown hover carticon ">
-                        <a href="#" class="dropdown-toggle" > Shopping Cart <span class="label label-orange font14">1 item(s)</span> - $589.50 <b class="caret"></b></a>
-                        <ul class="dropdown-menu topcartopen ">
-                            <li>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td class="image"><a href="product.html"><img width="50" height="50" src="../../img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                        <td class="name"><a href="product.html">MacBook</a></td>
-                                        <td class="quantity">x&nbsp;1</td>
-                                        <td class="total">$589.50</td>
-                                        <td class="remove"><i class="icon-remove"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><a href="product.html"><img width="50" height="50" src="../../img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                        <td class="name"><a href="product.html">MacBook</a></td>
-                                        <td class="quantity">x&nbsp;1</td>
-                                        <td class="total">$589.50</td>
-                                        <td class="remove"><i class="icon-remove "></i></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td class="textright"><b>Sub-Total:</b></td>
-                                        <td class="textright">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>Eco Tax (-2.00):</b></td>
-                                        <td class="textright">$2.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>VAT (17.5%):</b></td>
-                                        <td class="textright">$87.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>Total:</b></td>
-                                        <td class="textright">$589.50</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="well pull-right buttonwrap">
-                                    <a class="btn btn-orange" href="#">View Cart</a>
-                                    <a class="btn btn-orange" href="#">Checkout</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Header End -->
-
+<%@include file="/public/header.jsp"%>
 <div id="maincontainer">
     <section id="product">
         <div class="container">
@@ -212,7 +119,7 @@
                                 </div>
                             </div>
                             <ul class="productpagecart">
-                                <li><a class="cart" href="${shop}/Soder_addSorder.action?product.id=${product.id}">添加购物车</a>
+                                <li><a class="cart" href="${shop}/Sorder_addSorder.action?product.id=${product.id}">添加购物车</a>
                                 </li>
                                 <li><a class="wish" href="#" >加入收藏</a>
                                 </li>
@@ -375,7 +282,7 @@
 
 <!-- Footer -->
 <%--<footer id="footer">--%>
-    <%@include file="/htmlfooter.jsp"%>
+    <%@include file="/public/htmlfooter.jsp"%>
 <%--</footer>--%>
 </body>
 </html>

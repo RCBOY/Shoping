@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.UUID;
 
 /**
@@ -16,8 +17,11 @@ import java.util.UUID;
  */
 @Component("fileUpload")
 public class FileUploadUtil implements com.ztc.shop.unit.FileUpload {
-    String filePath="";
-    @Value("#{prop.filePath}")
+    @Value("#{prop.basePath+prop.filePath}")
+    private String filePath="";
+    @Value("#{prop.basePath+prop.bankPath}")
+    private String bankPath="";
+
     //    通过文件名获取扩展
     public void setFilePath(String filePath) {
         System.out.println(filePath);
@@ -27,12 +31,13 @@ public class FileUploadUtil implements com.ztc.shop.unit.FileUpload {
     public String getFileExt(String filename){
         return FilenameUtils.getExtension(filename);
     }
-//    根据生成uuid随机数作为新文件名
+
+    //    根据生成uuid随机数作为新文件名
     public String newFileName(String filename){
        String ext= getFileExt(filename);
         return UUID.randomUUID().toString()+"."+ext;
     }
-//    实现文件上传功能
+    //    实现文件上传功能
     public String uploadFile(FileImage fileImage){
        String pic= newFileName(fileImage.getFilename());
         try{
@@ -44,5 +49,13 @@ public class FileUploadUtil implements com.ztc.shop.unit.FileUpload {
         finally {
             fileImage.getFile().delete();
         }
+    }
+    public String[] getBankIamages(){
+        return new File(bankPath).list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".gif");
+            }
+        });
     }
 }

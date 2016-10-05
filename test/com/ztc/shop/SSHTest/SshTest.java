@@ -1,15 +1,18 @@
 package com.ztc.shop.SSHTest;
 
+import com.ztc.shop.model.Address;
 import com.ztc.shop.model.Category;
 import com.ztc.shop.model.Product;
-import com.ztc.shop.service.CategoryService;
-import com.ztc.shop.service.ProductService;
+import com.ztc.shop.model.Sorder;
+import com.ztc.shop.service.*;
+import com.ztc.shop.service.impl.SorderServiceImp;
+import com.ztc.shop.unit.EmailUtil;
+import com.ztc.shop.unit.EmailUtilImp;
 import net.sf.json.JSONSerializer;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +24,10 @@ import java.util.List;
 public class SshTest {
     private CategoryService categoryService;
     private ProductService productService;
+    private AddressService addressService;
+    private ForderService forderService;
+    private EmailUtil emailUtil;
+    private SorderService sorder;
 
 
     @Test
@@ -90,6 +97,37 @@ public class SshTest {
             System.out.println(productService.queryByHotCid(category.getId()));
         }
 
+    }
+    @Test
+    public void  text8(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        addressService = applicationContext.getBean(AddressService.class);
+        for(Address address: addressService.getAddressByUid(2)) {
+            //根据热点类别查出相应的产品
+            System.out.println(address.getAddressname());
+        }
+    }
+    @Test
+    public void  text9(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        forderService = applicationContext.getBean(ForderService.class);
+        forderService.updateStatusById(2016092117,2);
+    }
+    @Test
+    public void  text10(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        emailUtil = applicationContext.getBean(EmailUtilImp.class);
+        emailUtil.sendEmail("329942954@qq.com","212121");
+    }
+    @Test
+    public void  text11(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        sorder = applicationContext.getBean(SorderService.class);
+        JSONSerializer.toJSON(sorder.querySale(5));
     }
     }
 

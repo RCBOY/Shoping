@@ -22,7 +22,9 @@ import java.util.Map;
 @Scope("prototype")
 public class CategoryClassAction extends BaseAction<Category> {
     public CategoryClassAction() {
+
     }
+
     public String   queryJoinAccount(){
         pageMap =new HashMap<String,Object>();
         List<Category> list=categoryService.queryJoinAccount(model.getType(),page,rows);
@@ -32,21 +34,25 @@ public class CategoryClassAction extends BaseAction<Category> {
         pageMap.put("total",count);
         return "JsonDataMap";
     }
+
     public String deleteByIds(){
         categoryService.deleteByIds(ids);
         inputStream =new ByteArrayInputStream("true".getBytes());
         return "Stream";
     }
+
     public String save(){
         categoryService.save(model);
         inputStream =new ByteArrayInputStream("true".getBytes());
         return "Stream";
     }
+
     public String update(){
         categoryService.update(model);
         inputStream =new ByteArrayInputStream("true".getBytes());
         return "Stream";
     }
+
     public String query(){
         jsonList =new ArrayList<Category>();
         jsonList=categoryService.query();

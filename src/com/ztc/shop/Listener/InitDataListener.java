@@ -4,6 +4,7 @@ import com.ztc.shop.model.Category;
 import com.ztc.shop.model.Product;
 import com.ztc.shop.service.CategoryService;
 import com.ztc.shop.service.ProductService;
+import com.ztc.shop.unit.FileUpload;
 import com.ztc.shop.unit.ProductTimerTaskUntil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.Lifecycle;
@@ -24,17 +25,10 @@ import java.util.Timer;
 public class InitDataListener implements ServletContextListener {
     private ApplicationContext context=null;
     private ProductTimerTaskUntil productTimerTaskUntil=null;
+    private FileUpload fileUpload=null;
     @Override
     public void contextDestroyed (ServletContextEvent servletContextEvent) {
-        //Enumeration<java.sql.Driver> drivers= DriverManager.getDrivers();
-        //while (drivers.hasMoreElements()) {
-        //    java.sql.Driver driver = drivers.nextElement();
-        //    try {
-        //        DriverManager.deregisterDriver(driver);
-        //    } catch (SQLException e) {
-        //        e.printStackTrace();
-        //    }
-        //}
+
     }
 
     @Override
@@ -46,9 +40,13 @@ public class InitDataListener implements ServletContextListener {
     //    通过工具类加载
         context= WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
         productTimerTaskUntil=(ProductTimerTaskUntil) context.getBean("productTimerTask");
+        fileUpload=(FileUpload) context.getBean("fileUpload");
+
         //把内置对象交给TimerTaskUtil
         productTimerTaskUntil.setAppliction(servletContextEvent.getServletContext());
         //通过定时器设置同步的时间间隔,配置为守护线程
         new Timer(true).schedule(productTimerTaskUntil,0,1000*60*60);
+        //    加载银行图标
+        servletContextEvent.getServletContext().setAttribute("bankList",fileUpload.getBankIamages());
     }
 }

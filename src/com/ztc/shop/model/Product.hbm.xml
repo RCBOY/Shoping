@@ -35,7 +35,7 @@
         <property name="open">
             <column name="open" sql-type="tinyint(1)" not-null="true"/>
         </property>
-        <many-to-one name="category" class="com.ztc.shop.model.Category" lazy="false" >
+        <many-to-one name="category" class="com.ztc.shop.model.Category"  lazy="false" >
             <column name="cid"/>
         </many-to-one>
         <property name="size">

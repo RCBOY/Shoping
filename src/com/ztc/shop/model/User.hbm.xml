@@ -26,5 +26,12 @@
         <property name="email">
             <column name="email" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
+        <set name="addressSet">
+            <!--代表的是外键-->
+            <key>
+                <column name="uid"/>
+            </key>
+            <one-to-many class="com.ztc.shop.model.Address"/>
+        </set>
     </class>
 </hibernate-mapping>

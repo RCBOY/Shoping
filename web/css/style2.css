@@ -159,11 +159,11 @@ th{ height: 40px; }
 .select-bank ul{padding-left: 20px;}
 .select-bank ul li {margin-top:20px;float: left;height:50px;margin-right: 20px;position: relative;width: 200px;}
 .select-bank ul li img{position: absolute;top:-10px;}
-.reminder{width: 760px;height: 40px;line-height: 40px;background-color: #CECECE;margin: 0 auto;font-size: 12px;padding-left: 40px;color:#3366FF;}
+.reminder{width: auto;height: 40px;line-height: 40px;background-color: #CECECE;margin: 0 auto;font-size: 12px;padding-left: 40px;color:#3366FF;}
  .reminder a{color: #E71111;}
 
  /**/
- .pay-submit{width: 958px;height: 40px;padding: 10px;border:1px solid #E8E8E8;margin-bottom:100px; }
+ .pay-submit{width: auto ;height: 40px;padding: 10px;border:1px solid #E8E8E8;margin-bottom:100px; }
  .pay-submit .pay-inner{width: 80px;height: 40px;line-height:40px;text-align:center;float: right;background-color:#f38256;font-weight: bold;color: #000;}
 .pay-submit .pay-inner a{color: #fff;}
 

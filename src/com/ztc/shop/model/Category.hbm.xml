@@ -22,7 +22,7 @@
          在main-to-one的情况下：对join无效
          解决方案：使用hql取代配置，可以提升性能
         -->
-        <many-to-one name="account" class="com.ztc.shop.model.Account" >
+        <many-to-one name="account" class="com.ztc.shop.model.Account">
             <column name="aid"/>
         </many-to-one>
     </class>

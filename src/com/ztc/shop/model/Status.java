@@ -10,6 +10,12 @@ public class Status implements Serializable {
     private static final long serialVersionUID = 8104466269125895179L;
     private int id;
     private String status;
+    public Status(){
+
+    }
+    public Status(int id){
+        this.id=id;
+    }
 
     public int getId() {
         return id;

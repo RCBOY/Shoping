@@ -1,6 +1,7 @@
 package com.ztc.shop.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Description：
@@ -15,7 +16,21 @@ public class User implements Serializable{
     private String phone;
     private String sex;
     private String email;
+    private Set<Address> addressSet;
 
+    public User(){
+
+    }
+    public User(Set<Address> addresses){
+        this.addressSet=addressSet;
+    }
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
+    }
 
     @Override
     public String toString() {

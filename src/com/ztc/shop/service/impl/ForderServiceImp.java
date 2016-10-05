@@ -19,4 +19,13 @@ public class ForderServiceImp extends BaseServiceImp<Forder> implements ForderSe
         }
         return total;
     }
+
+    @Override
+    public void updateStatusById(int id,int sid) {
+        String hql="UPDATE Forder f SET f.status=:sid WHERE f.id=:id";
+        getSession().createQuery(hql)
+                .setInteger("sid",sid)
+                .setInteger("id",id)
+                .executeUpdate();
+    }
 }
