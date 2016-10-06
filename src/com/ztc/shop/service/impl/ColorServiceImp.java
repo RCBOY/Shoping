@@ -11,4 +11,5 @@ import org.springframework.stereotype.Service;
 @SuppressWarnings("unchecked")
 @Service("colorService")
 public class ColorServiceImp extends BaseServiceImp<Color> implements ColorService{
+
 }

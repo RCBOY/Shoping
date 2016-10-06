@@ -11,5 +11,4 @@ import org.springframework.stereotype.Service;
 @SuppressWarnings("unchecked")
 @Service("sizeService")
 public class SizeServiceImp extends BaseServiceImp<Size> implements SizeService {
-
 }

@@ -19,6 +19,7 @@ public class AccountClassAction extends BaseAction<Account> {
     public AccountClassAction() {
     }
 
+
     public String query(){
         jsonList =new ArrayList<Account>();
         jsonList=accountService.query();

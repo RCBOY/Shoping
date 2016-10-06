@@ -40,15 +40,8 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
-          <file>file://$MODULE_DIR$/src/Application-public.xml</file>
-          <file>file://$MODULE_DIR$/src/Application-service.xml</file>
-          <file>file://$MODULE_DIR$/src/Application-action.xml</file>
-        </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/Application-action.xml</file>
           <file>file://$MODULE_DIR$/src/Application-public.xml</file>
-          <file>file://$MODULE_DIR$/src/Application-service.xml</file>
         </fileset>
       </configuration>
     </facet>

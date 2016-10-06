@@ -33,10 +33,6 @@ public class InitDataListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-    //注入Service，直接到ServletContext中获取Spring文件,但此方法不常用
-    //    ApplicationContext context=(ApplicationContext) servletContextEvent.getServletContext().getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
-    //    productService=(ProductService) context.getBean("productService");
-    //    System.out.println(productService);
     //    通过工具类加载
         context= WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
         productTimerTaskUntil=(ProductTimerTaskUntil) context.getBean("productTimerTask");

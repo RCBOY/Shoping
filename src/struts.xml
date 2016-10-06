@@ -12,6 +12,9 @@
             <result name="index">/index.jsp</result>
             <result name="userLogin" type="redirect">/userLogin.jsp</result>
         </global-results>
+        <!--<global-exception-mappings>-->
+            <!--<exception-mapping exception="" result=""></exception-mapping>-->
+        <!--</global-exception-mappings>-->
         <action name="Category_*" class="categoryClassAction" method="{1}">
             <result name="JsonDataMap" type="json">
                 <!--要转换为json格式的数据-->
