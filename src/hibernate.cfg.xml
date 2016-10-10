@@ -31,6 +31,7 @@
         <mapping resource="com/ztc/shop/model/Address.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Forder.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Sorder.hbm.xml"/>
+        <mapping resource="com/ztc/shop/model/Notice.hbm.xml"/>
         <!--配置哪些类被缓存-->
         <class-cache class="com.ztc.shop.model.Product" usage="read-write"/>
         <class-cache class="com.ztc.shop.model.Category" usage="read-write"/>

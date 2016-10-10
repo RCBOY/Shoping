@@ -126,8 +126,17 @@ public class SshTest {
     public void  text11(){
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("/Application-public.xml");
-        sorder = applicationContext.getBean(SorderService.class);
-        JSONSerializer.toJSON(sorder.querySale(5));
+        productService = applicationContext.getBean(ProductService.class);
+      for (Product product:productService.queryByStar(3,5)){
+          System.out.println(product);
+      }
+    }
+    @Test
+    public void  text12(){
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("/Application-public.xml");
+        EmailUtil emailUtil = applicationContext.getBean(EmailUtil.class);
+       emailUtil.sendEmail("329942954@qq.com","dsada");
     }
     }
 

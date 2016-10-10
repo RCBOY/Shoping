@@ -6,6 +6,7 @@ import com.ztc.shop.model.FileImage;
 import com.ztc.shop.service.*;
 import com.ztc.shop.unit.EmailUtil;
 import com.ztc.shop.unit.FileUpload;
+import com.ztc.shop.unit.MessageCodeUtil;
 import com.ztc.shop.unit.MessageUtil;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
@@ -71,6 +72,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public EmailUtil emailUtil;
     @Resource
     public MessageUtil messageUtil;
+    @Resource
+    public MessageCodeUtil messageCodeUtil;
     // 构造器
     public BaseAction() {
         super();

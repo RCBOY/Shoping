@@ -32,12 +32,36 @@ public class ProductTimerTaskUntil extends TimerTask {
     @Override
     public void run() {
         List<List<Product>> bigList=new ArrayList<List<Product>>();
+        List<Product> starList=new ArrayList<>();
+        List<Product> fiveStarList=new ArrayList<>();
+        List<Product> lastProductList=new ArrayList<>();
+        List<Category> categoryList=new ArrayList<>();
         //首先查出热点类别
         for(Category category: categoryService.queryByhot(true)) {
             //根据热点类别查出相应的产品
             bigList.add(productService.queryByHotCid(category.getId()));
         }
+        //根据商品star选出推荐商品
+        for(Product product:productService.queryByStar(3,4)){
+            starList.add(product);
+        }
+        //首页五星推荐
+        for(Product product:productService.queryByStar(4,4)){
+            fiveStarList.add(product);
+        }
+        //查询类别
+        for(Category category:categoryService.query()){
+            categoryList.add(category);
+        }
+        //最新上架商品
+        for(Product product:productService.queryByTime(0,5)){
+            lastProductList.add(product);
+        }
         //把查询的bigList放入application内置对象
+        appliction.setAttribute("categoryList",categoryList);
+        appliction.setAttribute("lastProductList",lastProductList);
+        appliction.setAttribute("fiveStarList",fiveStarList);
+        appliction.setAttribute("starList",starList);
         appliction.setAttribute("bigList",bigList);
     }
 }

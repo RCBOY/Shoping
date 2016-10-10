@@ -18,7 +18,16 @@ import java.util.ArrayList;
 public class AccountClassAction extends BaseAction<Account> {
     public AccountClassAction() {
     }
-
+    public String Login(){
+        model=accountService.Login(model);
+        if (model==null){
+            session.put("acccountError","用户名或账号错误");
+            return "accountLogin";
+        }{
+            session.put("accountLogin",model);
+            return "aindex";
+        }
+    }
 
     public String query(){
         jsonList =new ArrayList<Account>();

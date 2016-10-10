@@ -52,5 +52,32 @@ public class ProductDaoImp extends BaseDaoImp<Product> implements ProductDao{
                 .setMaxResults(3)//
                 .list();
     }
+    public List<Product> queryByStar(int num ,int count){
+        String hql="FROM Product p JOIN FETCH p.category WHERE p.star>:num ORDER BY p.date DESC";
+        return getSession().createQuery(hql)
+                .setInteger("num",num)
+                .setFirstResult(0)
+                .setMaxResults(count)
+                .list();
+    }
+    public List<Product> queryByTime(int first,int count){
+        String hql="From Product p JOIN FETCH p.category ORDER BY p.date DESC";
+        return getSession().createQuery(hql)
+                .setFirstResult(first)
+                .setMaxResults(count)
+                .list();
+    }
 
+    @Override
+    public List<Product> queryForPsage(String hql, int offest, int length) {
+       return getSession().createQuery(hql)
+                .setFirstResult(offest)
+                .setMaxResults(length)
+                .list();
+    }
+
+    @Override
+    public int getAllRowCount(String hql) {
+        return (int)getSession().createQuery(hql).list().size();
+    }
 }

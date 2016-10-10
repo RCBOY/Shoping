@@ -37,11 +37,42 @@
             }
         }
     </script>
+    <%--<meta http-equiv=refresh content=3;url=http://www.hao123.com />--%>
+    <style type=text/css>
+        .font14 {
+            font-size: 14px
+        }
+
+        .font12 {
+            font-size: 12px
+        }
+
+        .font12 a {
+            font-size: 12px;
+            color: #CC0000;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body class="error_page" onload="startTimes();">
-<h4 id="error">
-    页面已过时，&nbsp;<span id="secondes">5</span>&nbsp;秒后将自动跳转，立即跳转请点击&nbsp;
-    <a  href="javascript:resetTimer();">跳转</a>
-</h4>
+<table height=500 cellSpacing=0 cellPadding=0 width=500 align=center
+       background=/Images/image.gif border=0>
+    <tbody>
+    <tr>
+        <td height=330></td>
+    </tr>
+    <tr>
+        <td vAlign=top>
+            <div class=font14 align=center>
+                <strong> ${exception.message}</strong><br />
+                <font color=#666666>
+                   &nbsp;<span id="secondes">5</span>&nbsp;秒后将自动跳转，立即跳转请点击&nbsp;
+                    <a  href="javascript:resetTimer();">跳转</a>
+               </font>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

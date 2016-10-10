@@ -16,4 +16,9 @@ public class AccountServiceImp extends BaseServiceImp<Account> implements Accoun
     public AccountServiceImp(){
         super();
     }
+
+    @Override
+    public Account Login(Account account) {
+        return accountDao.login(account);
+    }
 }

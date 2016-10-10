@@ -30,10 +30,10 @@
                             <span>支付金额：</span><strong>${requestScope.p3_Amt}</strong>
                         </div>
                         <div>
-                            <span>支付方式：</span><img class="zffs" src="${shop}Images/yibao.jpg" alt="" />
+                            <span>支付方式：</span><span><img class="zffs" src="${shop}Images/yibao.jpg" alt="" /></span>
                         </div>
                         <div>
-                            <span>支付银行：</span><img class="zfyh" src="${shop}Images/bank/${requestScope.pd_FrpId}.gif" alt="" />
+                            <span>支付银行：</span><span><img class="zfyh" src="${shop}Images/bank/${requestScope.pd_FrpId}.gif" alt="" /></span>
                         </div>
                         <div>
                             <form name="yeepay" action='https://www.yeepay.com/app-merchant-proxy/node' method='POST' target="_blank">

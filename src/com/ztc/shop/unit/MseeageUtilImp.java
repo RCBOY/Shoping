@@ -13,12 +13,12 @@ import java.io.IOException;
  * Created by ZTCJoe on 2016/10/4.
  */
 @Component("messageUtil")
-public class MseeageUtilImp implements MessageUtil {
+public class MseeageUtilImp implements MessageUtil  {
     @Value("#{prop.messageKey}")
     private String messageKey="";
     @Value("#{prop.messageUid}")
     private String messageUid="";
-    public void seadMessage(String number, String id) {
+    public void seadMessage(String number, String message) {
         //    打开浏览器
         HttpClient httpClient = new HttpClient();
         //    创建请求方式
@@ -28,7 +28,7 @@ public class MseeageUtilImp implements MessageUtil {
         postMethod.setParameter("uid", messageUid);
         postMethod.setParameter("key", messageKey);
         postMethod.setParameter("smsMob", number);
-        postMethod.setParameter("smsText", "订单"+id+"已经支付成功");
+        postMethod.setParameter("smsText", message);
         //    提交请求
         int code;
         String result = null;

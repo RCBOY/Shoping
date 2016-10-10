@@ -20,13 +20,13 @@
                         <div class="navbar" id="topnav">
                             <div class="navbar-inner">
                                 <ul class="nav" >
-                                    <li><a class="home active" href="#">首页</a>
+                                    <li><a class="home active" href="${shop}/index.jsp">首页</a>
                                     </li>
-                                    <li><a class="myaccount" href="#">我的账户</a>
+                                    <li><a class="myaccount" href="${shop}/user/myaccount.jsp">我的账户</a>
                                     </li>
-                                    <li><a class="shoppingcart" href="#">购物车</a>
+                                    <li><a class="shoppingcart" href="${shop}/cart.jsp">购物车</a>
                                     </li>
-                                    <li><a class="checkout" href="#">CheckOut</a>
+                                    <li><a class="checkout" href="User_quitUser.action">退出账户</a>
                                     </li>
                                 </ul>
                             </div>

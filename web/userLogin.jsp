@@ -29,15 +29,15 @@
                 <div class="span9">
                     <h1 class="heading1"><span class="maintext">Login</span><span class="subtext">First Login here to View All your account information</span></h1>
                     <section class="newcustomer">
-                        <h2 class="heading2">New Customer </h2>
+                        <h2 class="heading2">新用户</h2>
                         <div class="loginbox">
-                            <h4 class="heading4"> Register Account</h4>
+                            <h4 class="heading4"> 注册账户</h4>
                             <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
                             <br>
                             <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
                             <br>
                             <br>
-                            <a href="#" class="btn btn-orange">Continue</a>
+                            <a href="${shop}/register.jsp" class="btn btn-orange">开始注册</a>
                         </div>
                     </section>
                     <section class="returncustomer">
@@ -58,7 +58,9 @@
                                             <input name="pass" type="text"  class="span3">
                                         </div>
                                     </div>
-                                    <div>${sessionScope.error}</div>
+                                    <div class="errormsg alert">
+                                        <a class="clostalert">close</a>
+                                        <strong>Error!</strong> ${sessionScope.error}</div>
                                     <a class="" href="#">忘记密码</a>
                                     <br>
                                     <br>
@@ -72,34 +74,34 @@
                 <!-- Sidebar Start-->
                 <aside class="span3">
                     <div class="sidewidt">
-                        <h2 class="heading2"><span>Account</span></h2>
+                        <h2 class="heading2"><span>我的订单</span></h2>
                         <ul class="nav nav-list categories">
                             <li>
-                                <a href="#"> My Account</a>
+                                <a href="#">查看全部订单</a>
                             </li>
                             <li>
-                                <a href="#">Edit Account</a>
+                                <a href="#">未付款订单</a>
                             </li>
                             <li>
-                                <a href="#">Password</a>
+                                <a href="#">已付款订单</a>
                             </li>
                             <li>
-                                <a href="#">Wish List</a>
+                                <a href="#">已完成订单</a>
                             </li>
-                            <li><a href="#">Order History</a>
-                            </li>
-                            <li><a href="#">Downloads</a>
-                            </li>
-                            <li><a href="#">Returns</a>
+                        </ul>
+                        <h2 class="heading2"><span>我的账户</span></h2>
+                        <ul class="nav nav-list categories">
+                            <li>
+                                <a href="#">修改个人信息</a>
                             </li>
                             <li>
-                                <a href="#"> Transactions</a>
+                                <a href="#">修改密码</a>
                             </li>
                             <li>
-                                <a href="category.html">Newsletter</a>
+                                <a href="#">我的地址</a>
                             </li>
                             <li>
-                                <a href="category.html">Logout</a>
+                                <a href="#">我的收藏</a>
                             </li>
                         </ul>
                     </div>

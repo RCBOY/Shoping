@@ -28,12 +28,6 @@ import java.util.List;
 public class BaseServiceImp<T> implements BaseService<T> {
     //存储了当前操作泛型的类型
     private Class clazz;
-   // @Resource  //没有制定名称默认属性的名称与id捆绑
-   //private SessionFactory sessionFactory;
-   //
-   // Session getSession(){
-   //     return  sessionFactory.getCurrentSession();
-   // }
 
    // 构造器执行之后执行init方法
     @PostConstruct
@@ -50,7 +44,6 @@ public class BaseServiceImp<T> implements BaseService<T> {
         }catch (Exception e){
             throw new RuntimeException(e);
         }
-        System.out.println(baseDao);
     }
 
    // @Resource
@@ -73,6 +66,9 @@ public class BaseServiceImp<T> implements BaseService<T> {
     protected SorderDao sorderDao;
     @Resource
     protected UserDao userDao;
+    @Resource
+    protected NoticeDao noticeDao;
+
 
     public BaseServiceImp(){
         //通过反射获取类类型
@@ -88,27 +84,21 @@ public class BaseServiceImp<T> implements BaseService<T> {
 
     @Override
     public void update(T t) {
-        //getSession().update(t);
         baseDao.update(t);
     }
 
     @Override
     public void delete(int id) {
-        //String hql="DELETE "+clazz.getSimpleName()+" c where c.id=:id";
-        //getSession().createQuery(hql).setInteger("id",id).executeUpdate();
         baseDao.delete(id);
     }
 
     @Override
     public T get(int id) {
-        //return (T) getSession().get(clazz,id);
       return (T) baseDao.get(id);
     }
 
     @Override
     public List<T> query() {
-        //String hql="FROM "+clazz.getSimpleName();
-        //return  getSession().createQuery(hql).list();
         return  baseDao.query();
     }
 }

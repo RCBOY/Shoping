@@ -176,82 +176,29 @@
     <!--  Related Products-->
     <section id="related" class="row">
         <div class="container">
-            <h1 class="heading1"><span class="maintext">Related Products</span><span class="subtext"> See Our Most featured Products</span></h1>
+            <h1 class="heading1"><span class="maintext">商城推荐</span><span class="subtext"> See Our Most featured Products</span></h1>
             <ul class="thumbnails">
-                <li class="span3">
-                    <a class="prdocutname" href="product.html">Product Name Here</a>
+             <c:forEach items="${applicationScope.starList}" var="productstar">
+            <li class="span3">
+                    <a class="prdocutname" href="${shop}/Product_get.action?id=${productstar.id}">${productstar.name}</a>
                     <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
+                        <a href="${shop}/Product_get.action?id=${productstar.id}"><img alt="" src="${shop}Images/${productstar.pic}"></a>
                         <div class="shortlinks">
-                            <a class="details" href="#">DETAILS</a>
-                            <a class="wishlist" href="#">WISHLIST</a>
-                            <a class="compare" href="#">COMPARE</a>
+                            <a class="details" href="${shop}/Product_get.action?id=${productstar.id}">详细</a>
+                            <a class="wishlist" href="#">加入收藏</a>
+                            <a class="compare" href="#">加入对比</a>
                         </div>
                         <div class="pricetag">
-                            <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                            <span class="spiral"></span><a href="${shop}/Sorder_addSorder.action?product.id=${productstar.id}" class="productcart">加入购物车</a>
                             <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
+                                <div class="pricenew">$${productstar.newprice}</div>
+                                <div class="priceold">$${productstar.price}</div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="span3">
-                    <a class="prdocutname" href="product.html">Product Name Here</a>
-                    <div class="thumbnail">
-                        <a href="#"><img alt="" src="img/product2.jpg"></a>
-                        <div class="shortlinks">
-                            <a class="details" href="#">DETAILS</a>
-                            <a class="wishlist" href="#">WISHLIST</a>
-                            <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                            <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                            <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="span3">
-                    <a class="prdocutname" href="product.html">Product Name Here</a>
-                    <div class="thumbnail">
-                        <span class="offer tooltip-test" >Offer</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                            <a class="details" href="#">DETAILS</a>
-                            <a class="wishlist" href="#">WISHLIST</a>
-                            <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                            <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                            <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="span3">
-                    <a class="prdocutname" href="product.html">Product Name Here</a>
-                    <div class="thumbnail">
-                        <a href="#"><img alt="" src="img/product2.jpg"></a>
-                        <div class="shortlinks">
-                            <a class="details" href="#">DETAILS</a>
-                            <a class="wishlist" href="#">WISHLIST</a>
-                            <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                            <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                            <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+             </c:forEach>
             </ul>
         </div>
     </section>

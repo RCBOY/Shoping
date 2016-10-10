@@ -21,6 +21,7 @@ public class User implements Serializable{
     public User(){
 
     }
+
     public User(Set<Address> addresses){
         this.addressSet=addressSet;
     }

@@ -20,6 +20,14 @@
         <filter-name>userFilter</filter-name>
         <url-pattern>/user/*</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>accountFilter</filter-name>
+        <filter-class>com.ztc.shop.filter.AccountFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>accountFilter</filter-name>
+        <url-pattern>/WEB-INF/*</url-pattern>
+    </filter-mapping>
     <!-- 配置 Spring 配置文件的名称和位置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>

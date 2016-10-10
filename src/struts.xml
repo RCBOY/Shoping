@@ -8,13 +8,17 @@
     <constant name="struts.devMode" value="true"/>
     <package name="shop" extends="json-default" namespace="/">
         <global-results>
-            <result name="aindex">/WEB-INF/main/aindex.jsp</result>
-            <result name="index">/index.jsp</result>
+        <result name="aindex">/WEB-INF/main/aindex.jsp</result>
+            <result name="error">/public/error.jsp</result>
+            <result name="AdminLogin" type="redirect">/AdminLogin/AdminLogin.jsp</result>
+            <result name="index" type="redirect">/index.jsp</result>
             <result name="userLogin" type="redirect">/userLogin.jsp</result>
         </global-results>
+        <!--配置异常拦截器映射-->
         <!--<global-exception-mappings>-->
-            <!--<exception-mapping exception="" result=""></exception-mapping>-->
+            <!--<exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>-->
         <!--</global-exception-mappings>-->
+
         <action name="Category_*" class="categoryClassAction" method="{1}">
             <result name="JsonDataMap" type="json">
                 <!--要转换为json格式的数据-->
@@ -36,7 +40,14 @@
                 </param>
             </result>
         </action>
+
         <action name="Account_*" class="accountClassAction" method="{1}">
+            <result name="accountLogin" >
+                /AdminLogin/AdminLogin.jsp
+            </result>
+            <result name="aindex" >
+                /WEB-INF/main/aindex.jsp
+            </result>
             <result name="jsonDataList" type="json">
                 <param name="root">jsonList</param>
                 <param name="excludeProperties">
@@ -44,6 +55,7 @@
                 </param>
             </result>
         </action>
+
         <action name="Product_*" class="productClassAction" method="{1}" >
             <result name="test">index.jsp</result>
             <result name="JsonDataMap" type="json">
@@ -61,16 +73,19 @@
                 /detail.jsp
             </result>
         </action>
+
         <action name="Size_*" class="sizeClassAcion" method="{1}">
             <result name="jsonDataList" type="json">
                 <param name="root">jsonList</param>
             </result>
         </action>
+
         <action name="Color_*" class="colorClassAction" method="{1}">
             <result name="jsonDataList" type="json">
                 <param name="root">jsonList</param>
             </result>
         </action>
+
         <action name="Sorder_*" class="sorderAction" method="{1}">
             <result name="showCar" type="redirect">/cart.jsp</result>
             <result name="Stream" type="stream">
@@ -78,17 +93,28 @@
             </result>
             <result name="jsonList" type="json"/>
         </action>
+
         <action name="Forder_*" class="forderClassAction" method="{1}">
             <result name="bank" type="redirect">/user/bank.jsp</result>
         </action>
+
+        <action name="Page_*" class="pageAction" method="{1}">
+            <result name="category" type="redirect">/category.jsp</result>
+        </action>
+
         <action name="User_*" class="userClassAction" method="{1}">
             <result name="url" type="redirect">
                ${#session.url}
             </result>
+            <result name="userComfir" type="redirect">/userComfir.jsp</result>
+            <result name="success" type="redirect">/public/success.jsp</result>
+            <!--<result name="index" type="redirect">/index.jsp</result>-->
         </action>
+
         <action name="Pay_*" class="payClassAction" method="{1}">
             <result name="pay">/user/pay.jsp</result>
         </action>
+
         <!--用来完成系统请求转发的Action,所有的请求交给execute-->
         <action name="Send_*_*" class="sendAction" >
             <result name="send">/WEB-INF/{1}/{2}.jsp</result>

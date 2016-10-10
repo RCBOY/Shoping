@@ -12,11 +12,6 @@ import org.springframework.stereotype.Service;
 public class UserServiceImp extends BaseServiceImp<User> implements UserService {
     @Override
     public User login(User user) {
-        //String hql="FROM User u WHERE u.login=:login AND u.pass=:pass";
-        //return  (User) getSession().createQuery(hql)
-        //        .setString("login",user.getLogin())
-        //        .setString("pass",user.getPass())
-        //        .uniqueResult();
         return userDao.login(user);
     }
 }

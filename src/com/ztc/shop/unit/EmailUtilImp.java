@@ -32,7 +32,7 @@ public class EmailUtilImp implements EmailUtil {
     @Value("#{prop.mailType}")
     private String mailType="";
 
-    public void sendEmail(String emailAddress,String id){
+    public void sendEmail(String emailAddress,String sendMessage){
         Properties properties=new Properties();
         Session session=null;
        javax.mail.Message message=null;
@@ -49,7 +49,7 @@ public class EmailUtilImp implements EmailUtil {
             // 设置邮件的标题
             message.setSubject(subject);
             //正文
-            message.setContent("订单"+id+"已支付成功",charset);
+            message.setContent(sendMessage,charset);
             //发件人邮箱
             message.setFrom(new InternetAddress(sendEmail));
             // 通过sesion获取邮件传输对象
