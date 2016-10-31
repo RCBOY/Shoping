@@ -5,6 +5,7 @@ import com.ztc.shop.model.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,13 +17,21 @@ import java.util.Set;
 @Scope("prototype")
 public class UserClassAction extends BaseAction<User> {
     private  String code;
-
+    private String oldpass;
     public void setCode(String code) {
         this.code = code;
     }
 
     public String getCode() {
         return code;
+    }
+
+    public String getOldpass() {
+        return oldpass;
+    }
+
+    public void setOldpass(String oldpass) {
+        this.oldpass = oldpass;
     }
 
     public String login(){
@@ -77,7 +86,7 @@ public class UserClassAction extends BaseAction<User> {
             session.remove("newUser");
             return "success";
         }else {
-            session.put("message","验证码错误");
+            session.put("message","邮件验证码错误");
             return "userComfir";
         }
     }
@@ -89,5 +98,42 @@ public class UserClassAction extends BaseAction<User> {
             session.remove("user");
             return "index";
         //}
+    }
+    public String modifyUser(){
+        try{
+            String ok="SUCCESS";
+            User user=(User) session.get("user");
+            user.setEmail(model.getEmail());
+            user.setPhone(model.getPhone());
+            user.setSex(model.getSex());
+            user.setName(model.getName());
+            userService.update(user);
+            inputStream=new ByteArrayInputStream(ok.getBytes());
+        }catch (Exception e){
+            //e.printStackTrace();
+            session.put("error","修改信息出错");
+            return "error";
+        }
+        return "Stream";
+    }
+    public String modifyPass(){
+        String ok="success";
+        String no="old pass wrong";
+        try{
+            User user=(User) session.get("user");
+            String pass=user.getPass();
+        if (oldpass.equals(pass)){
+            user.setPass(model.getPass());
+            userService.update(user);
+            inputStream=new ByteArrayInputStream(ok.getBytes());
+        }else {
+            inputStream=new ByteArrayInputStream(no.getBytes());
+        }
+
+        }catch (Exception e){
+            session.put("error","修改密码出错");
+            return "error";
+        }
+            return "Stream";
     }
 }

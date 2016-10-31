@@ -88,6 +88,7 @@
 
         <action name="Sorder_*" class="sorderAction" method="{1}">
             <result name="showCar" type="redirect">/cart.jsp</result>
+            <result name="forderdetail" type="redirect">/user/forderdetail.jsp</result>
             <result name="Stream" type="stream">
                 <param name="inputName">inputStream</param>
             </result>
@@ -96,6 +97,9 @@
 
         <action name="Forder_*" class="forderClassAction" method="{1}">
             <result name="bank" type="redirect">/user/bank.jsp</result>
+            <result name="forderQuey" >/user/forderquery.jsp</result>
+            <result name="forderForPay" >/user/forderforpay.jsp</result>
+
         </action>
 
         <action name="Page_*" class="pageAction" method="{1}">
@@ -108,6 +112,11 @@
             </result>
             <result name="userComfir" type="redirect">/userComfir.jsp</result>
             <result name="success" type="redirect">/public/success.jsp</result>
+            <result name="modifyuser" type="redirect">/user/modifyuser.jsp</result>
+            <result name="modifypass" type="redirect">/user/modifypass.jsp</result>
+            <result name="Stream" type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
             <!--<result name="index" type="redirect">/index.jsp</result>-->
         </action>
 

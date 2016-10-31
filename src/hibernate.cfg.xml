@@ -27,6 +27,7 @@
         <mapping resource="com/ztc/shop/model/Size.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Color.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/User.hbm.xml"/>
+        <mapping resource="com/ztc/shop/model/Userstate.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Status.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Address.hbm.xml"/>
         <mapping resource="com/ztc/shop/model/Forder.hbm.xml"/>

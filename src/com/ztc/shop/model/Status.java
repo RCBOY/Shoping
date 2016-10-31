@@ -52,4 +52,7 @@ public class Status implements Serializable {
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
+    public String toString() {
+        return "Status [id="+id +"status"+status+"hot"+"]";
+    }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class AddressDaoImp extends BaseDaoImp<Address> implements AddressDao {
     @Override
     public List<Address> getAddressByUid(int uid) {
-        String hql="FROM Address a LEFT JOIN FETCH a.user WHERE a.user=:uid";
+        String hql="FROM Address a LEFT JOIN fetch a.user WHERE a.user=:uid";
         return  getSession().createQuery(hql)
                 .setInteger("uid",uid)
                 .list();

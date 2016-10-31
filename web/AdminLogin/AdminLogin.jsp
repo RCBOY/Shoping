@@ -22,10 +22,10 @@
         <div class="username-text">管理员:</div>
         <div class="password-text">密码:</div>
         <div class="username-field">
-            <input type="text" name="login" value="azmind" />
+            <input type="text" name="login" value="输入账号" />
         </div>
         <div class="password-field">
-            <input type="password" name="pass" value="azmind" />
+            <input type="password" name="pass" value="" />
         </div>
         <input type="checkbox" name="remember-me" id="remember-me" /><label for="remember-me">记住我</label>
         <div>${sessionScope.accountError}</div>

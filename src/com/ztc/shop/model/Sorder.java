@@ -15,6 +15,15 @@ public class Sorder implements Serializable {
     private Integer number;
     private Product product;
     private Forder forder;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Integer getId() {
         return id;

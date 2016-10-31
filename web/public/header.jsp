@@ -26,7 +26,7 @@
                                     </li>
                                     <li><a class="shoppingcart" href="${shop}/cart.jsp">购物车</a>
                                     </li>
-                                    <li><a class="checkout" href="User_quitUser.action">退出账户</a>
+                                    <li><a  class="checkout" href="User_quitUser.action">退出账户</a>
                                     </li>
                                 </ul>
                             </div>

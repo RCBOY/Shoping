@@ -1,7 +1,6 @@
 package com.ztc.shop.service.impl;
 
 import com.ztc.shop.model.User;
-import com.ztc.shop.service.BaseService;
 import com.ztc.shop.service.UserService;
 import org.springframework.stereotype.Service;
 

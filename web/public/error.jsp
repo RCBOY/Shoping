@@ -64,7 +64,7 @@
     <tr>
         <td vAlign=top>
             <div class=font14 align=center>
-                <strong> ${exception.message}</strong><br />
+                <strong> ${sessionScope.error}</strong><br />
                 <font color=#666666>
                    &nbsp;<span id="secondes">5</span>&nbsp;秒后将自动跳转，立即跳转请点击&nbsp;
                     <a  href="javascript:resetTimer();">跳转</a>

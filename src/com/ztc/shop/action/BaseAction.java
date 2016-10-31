@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.Map;
  */
 @Controller
 @Scope("prototype")
-public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T> {
+public class BaseAction<T> extends ActionSupport implements  RequestAware,SessionAware,ApplicationAware,ModelDriven<T> {
     //获取FileImage对象，封装了文件上传的属性
     protected FileImage fileImage;
     //获取要删除的ids以及流
@@ -40,6 +41,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     protected  Map<String,Object> pageMap=null;
     //用于返回列表
     protected List<T> jsonList=null;
+    //用于返回密码修改成功与否的String
+    protected String  jsonString=null;
     //注入各种Map
     protected Map<String,Object> request;
     protected Map<String,Object> application;
@@ -74,6 +77,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     public MessageUtil messageUtil;
     @Resource
     public MessageCodeUtil messageCodeUtil;
+    @Resource
+    public KuaiDiService kuaiDiService;
     // 构造器
     public BaseAction() {
         super();
@@ -131,7 +136,7 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
     @Override
     public T getModel() {
         ParameterizedType type=(ParameterizedType) this.getClass().getGenericSuperclass();
-       Class clazz=(Class)type.getActualTypeArguments()[0];
+        Class clazz=(Class)type.getActualTypeArguments()[0];
         try{
             model=(T) clazz.newInstance();
 

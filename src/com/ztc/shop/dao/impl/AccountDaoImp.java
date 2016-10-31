@@ -2,7 +2,6 @@ package com.ztc.shop.dao.impl;
 
 import com.ztc.shop.dao.AccountDao;
 import com.ztc.shop.model.Account;
-import com.ztc.shop.model.User;
 import org.springframework.stereotype.Repository;
 
 /**

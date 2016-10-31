@@ -52,7 +52,7 @@
                                 <input type="hidden" name="pr_NeedResponse"  value="${requestScope.pr_NeedResponse}">
                                 <input type='hidden' name='hmac' value='${requestScope.hmac}'>
                                 <div class="pay-inner">
-                                    <input type="submit" value="登陆网上银行，立即支付">
+                                    <input class="action_buttonbar" type="submit" value="登陆网上银行，立即支付">
                                 </div>
                             </form>
                         </div>

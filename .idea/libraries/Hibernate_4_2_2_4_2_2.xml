@@ -15,6 +15,7 @@
       <root url="jar://$PROJECT_DIR$/lib/ehcache-core-2.4.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/hibernate-ehcache-4.2.4.Final.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/json.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -31,8 +31,7 @@
                 <h2>Twitter </h2>
                 <div>
                     <ul>
-                        <li class="phone"> <a href="Send_main_aindex.jsp.action">后台登入</a></li>
-
+                        <li class="phone"> <a href="Send_main_aindex.action">后台登入</a></li>
                     </ul>
                 </div>
             </div>

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="/public/head.jsp"%>
     <%@include file="/public/htmlhead.jsp"%>
 </head>
 <body>
@@ -27,15 +28,15 @@
 
                 <!-- My Account-->
                 <div class="span9">
-                    <h1 class="heading1"><span class="maintext">My Accounts</span><span class="subtext">View All your account information</span></h1>
+                    <h1 class="heading1"><span class="maintext">我的账户</span><span class="subtext">管理您的账户信息</span></h1>
                     <h3 class="heading3">我的账户</h3>
                     <div class="myaccountbox">
                         <ul>
                             <li>
-                                <a href="#">修改个人信息</a>
+                                <a href="${shop}/user/modifyuser.jsp">修改信息</a>
                             </li>
                             <li>
-                                <a href="#">修改密码</a>
+                                <a href="${shop}/user/modifypass.jsp">修改密码</a>
                             </li>
                             <li>
                                 <a href="#">我的地址</a>
@@ -49,22 +50,28 @@
                     <div class="myaccountbox">
                         <ul>
                             <li>
-                                <a href="#">查看全部订单</a>
+                                <a href="${shop}/Forder_queryForderForAll.action">全部订单</a>
                             </li>
                             <li>
-                                <a href="#">未付款订单</a>
+                                <a href="${shop}/Forder_queryForderForPay.action">已付款订单</a>
                             </li>
                             <li>
-                                <a href="#">已付款订单</a>
+                                <a href="${shop}/Forder_queryForderNoPay.action">未付款订单</a>
                             </li>
                             <li>
-                                <a href="#">已完成订单</a>
+                                <a href="${shop}/Forder_queryForderOnPath.action">已发货订单</a>
+                            </li>
+                            <li>
+                                <a href="${shop}/Forder_queryForderHasOver.action">已完成订单</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+               <%@include file="/public/accountside.jsp"%>
             </div>
+
         </div>
+
     </section>
 </div>
 <%@include file="/public/htmlfooter.jsp"%>

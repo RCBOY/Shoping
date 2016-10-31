@@ -26,12 +26,20 @@
         <property name="email">
             <column name="email" sql-type="varchar(20)" length="20" not-null="true"/>
         </property>
-        <set name="addressSet">
-            <!--代表的是外键-->
+       <many-to-one name="userstate" class="com.ztc.shop.model.Userstate" lazy="false" >
+           <column name="suid"/>
+       </many-to-one>
+        <property name="createtime">
+            <column name="createtime" sql-type="timestamp"/>
+        </property>
+        <property name="lastLogin">
+            <column name="lastLogin" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <set name="addressSet" cascade="all" inverse="true" fetch="join">
             <key>
                 <column name="uid"/>
             </key>
-            <one-to-many class="com.ztc.shop.model.Address"/>
+            <one-to-many  class="com.ztc.shop.model.Address"/>
         </set>
     </class>
 </hibernate-mapping>

@@ -18,6 +18,9 @@
         <property name="number">
             <column name="number" sql-type="int(11)"/>
         </property>
+        <property name="message">
+            <column name="message" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
         <many-to-one name="forder" class="com.ztc.shop.model.Forder" >
         <column name="fid"></column>
         </many-to-one>

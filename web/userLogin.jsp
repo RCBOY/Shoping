@@ -60,7 +60,8 @@
                                     </div>
                                     <div class="errormsg alert">
                                         <a class="clostalert">close</a>
-                                        <strong>Error!</strong> ${sessionScope.error}</div>
+                                        <strong>Error!</strong> ${sessionScope.error}
+                                    </div>
                                     <a class="" href="#">忘记密码</a>
                                     <br>
                                     <br>

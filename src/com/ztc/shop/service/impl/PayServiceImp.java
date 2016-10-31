@@ -17,7 +17,7 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 @Service("payService")
 public class PayServiceImp implements PayService{
-    //
+
     @Value("#{prop.key}")
     private String key;
     // 商户编号

@@ -63,4 +63,7 @@ public class SorderServiceImp extends BaseServiceImp<Sorder> implements SorderSe
     public List<Object> querySale(int number) {
         return sorderDao.querySale(number);
     }
+    public List<Sorder> querSorderByfid(int fid){
+        return sorderDao.querSorderByfid(fid);
+    }
 }

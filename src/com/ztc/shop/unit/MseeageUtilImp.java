@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * Description：短信发送工具类
  * Created by ZTCJoe on 2016/10/4.
+ * HttpClent用于在java代码中发送http请求
  */
 @Component("messageUtil")
 public class MseeageUtilImp implements MessageUtil  {
@@ -19,7 +20,7 @@ public class MseeageUtilImp implements MessageUtil  {
     @Value("#{prop.messageUid}")
     private String messageUid="";
     public void seadMessage(String number, String message) {
-        //    打开浏览器
+        //    打开浏览器（用于模拟发送http请求）
         HttpClient httpClient = new HttpClient();
         //    创建请求方式
         PostMethod postMethod = new PostMethod("http://utf8.sms.webchinese.cn/");

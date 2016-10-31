@@ -1,14 +1,13 @@
 package com.ztc.shop.model;
 
-import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Set;
 
 /**
  * Description：
- * Created by ZTCJoe on 2016/9/28.
+ * Created by ZTCJoe on 2016/10/30.
  */
-public class User implements Serializable{
-    private static final long serialVersionUID = -953442701658063568L;
+public class User {
     private int id;
     private String login;
     private String name;
@@ -16,28 +15,17 @@ public class User implements Serializable{
     private String phone;
     private String sex;
     private String email;
+    private Userstate userstate;
+    private Timestamp createtime;
+    private String lastLogin;
     private Set<Address> addressSet;
 
     public User(){
 
     }
-
     public User(Set<Address> addresses){
         this.addressSet=addressSet;
     }
-    public Set<Address> getAddressSet() {
-        return addressSet;
-    }
-
-    public void setAddressSet(Set<Address> addressSet) {
-        this.addressSet = addressSet;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public int getId() {
         return id;
     }
@@ -94,6 +82,38 @@ public class User implements Serializable{
         this.email = email;
     }
 
+    public Userstate getUserstate() {
+        return userstate;
+    }
+
+    public void setUserstate(Userstate userstate) {
+        this.userstate = userstate;
+    }
+
+    public Timestamp getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(String lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -108,6 +128,9 @@ public class User implements Serializable{
         if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
         if (sex != null ? !sex.equals(user.sex) : user.sex != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (userstate != null ? !userstate.equals(user.userstate) : user.userstate != null) return false;
+        if (createtime != null ? !createtime.equals(user.createtime) : user.createtime != null) return false;
+        if (lastLogin != null ? !lastLogin.equals(user.lastLogin) : user.lastLogin != null) return false;
 
         return true;
     }
@@ -121,6 +144,9 @@ public class User implements Serializable{
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (userstate != null ? userstate.hashCode() : 0);
+        result = 31 * result + (createtime != null ? createtime.hashCode() : 0);
+        result = 31 * result + (lastLogin != null ? lastLogin.hashCode() : 0);
         return result;
     }
 }

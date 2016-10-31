@@ -1,18 +1,15 @@
 package com.ztc.shop.SSHTest;
 
-import com.ztc.shop.model.Address;
-import com.ztc.shop.model.Category;
-import com.ztc.shop.model.Product;
-import com.ztc.shop.model.Sorder;
+import com.ztc.shop.model.*;
 import com.ztc.shop.service.*;
-import com.ztc.shop.service.impl.SorderServiceImp;
 import com.ztc.shop.unit.EmailUtil;
 import com.ztc.shop.unit.EmailUtilImp;
-import net.sf.json.JSONSerializer;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.security.PublicKey;
 import java.util.List;
 
 /**
@@ -77,8 +74,7 @@ public class SshTest {
     }
     @Test
     public void  text6(){
-        ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("/Application-public.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/Application-public.xml");
         productService = applicationContext.getBean(ProductService.class);
         Product product= productService.get(2);
         product.setId(110);
@@ -126,10 +122,9 @@ public class SshTest {
     public void  text11(){
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("/Application-public.xml");
-        productService = applicationContext.getBean(ProductService.class);
-      for (Product product:productService.queryByStar(3,5)){
-          System.out.println(product);
-      }
+        forderService = applicationContext.getBean(ForderService.class);
+        List<Forder> list=forderService.getByUidAndSid(1,"2");
+        System.out.println(list.size());
     }
     @Test
     public void  text12(){
@@ -138,5 +133,7 @@ public class SshTest {
         EmailUtil emailUtil = applicationContext.getBean(EmailUtil.class);
        emailUtil.sendEmail("329942954@qq.com","dsada");
     }
+
+
     }
 

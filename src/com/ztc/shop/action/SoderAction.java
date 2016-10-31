@@ -1,16 +1,14 @@
 package com.ztc.shop.action;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.ztc.shop.model.Forder;
-import com.ztc.shop.model.Product;
-import com.ztc.shop.model.Sorder;
-import org.springframework.context.ApplicationContext;
+
+import com.ztc.shop.model.*;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.ByteArrayInputStream;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Description：
@@ -55,4 +53,37 @@ public class SoderAction extends BaseAction<Sorder>{
         ActionContext.getContext().getValueStack().push(list);
         return "jsonList";
     }
+    public String getSorderDetail() throws Exception{
+        List<Sorder> list= sorderService.querSorderByfid(model.getForder().getId());
+        Forder forder=forderService.get(model.getForder().getId());
+        String name=forder.getAddress().getName();
+        String phone=forder.getAddress().getPhone();
+        String addressname=forder.getAddress().getAddressname();
+
+        if(forder.getPost().equals("0")) {
+            session.put("kdstate", "未发货");
+            session.put("kdtracelist", null);
+            session.put("kdLogisticCode", null);
+            session.put("ordercode", forder.getId());
+        }else {
+            KuaiDiBack kuaiDiBack = kuaiDiService.getOrderTracesByJson("ZTO", forder.getPost());
+            if (kuaiDiBack.getSuccess().equals("true") && kuaiDiBack.getReason().equals("no")) {
+                session.put("kdstate", kuaiDiBack.getState());
+                session.put("kdtracelist", kuaiDiBack.getTraces());
+                session.put("kdLogisticCode", kuaiDiBack.getLogisticCode());
+                session.put("ordercode", forder.getId());
+            } else {
+                session.put("kdstate", null);
+                session.put("kdtracelist", null);
+                session.put("kdLogisticCode", null);
+                session.put("ordercode", null);
+            }
+        }
+        session.put("forderdetaillist",list);
+        session.put("addressname",name);
+        session.put("addressphone",phone);
+        session.put("addressadname",addressname);
+        return "forderdetail";
+    }
+
 }

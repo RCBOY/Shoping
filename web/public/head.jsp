@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="Shop"></c:set>
-<title>GOGO商城</title>
+<title>SimpleOne商城</title>
 <link rel="stylesheet" type="text/css" href="${Shop}/jquery-easyui-1.5/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="${Shop}/jquery-easyui-1.5/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../demo.css">

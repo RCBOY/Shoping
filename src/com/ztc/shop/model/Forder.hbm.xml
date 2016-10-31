@@ -19,15 +19,15 @@
             <column name="total" sql-type="decimal(8,2)" precision="8" scale="2" not-null="false"/>
         </property>
         <property name="post">
-            <column name="post" sql-type="varchar(20)" length="20" not-null="false"/>
+            <column name="post" sql-type="varchar(20)" length="20" not-null="false" default="0"/>
         </property>
-        <many-to-one name="address" class="com.ztc.shop.model.Address">
+        <many-to-one name="address" class="com.ztc.shop.model.Address" fetch="join" >
             <column name="adid"/>
         </many-to-one>
-        <many-to-one name="status" class="com.ztc.shop.model.Status" >
+        <many-to-one name="status" class="com.ztc.shop.model.Status" fetch="join">
             <column name="sid"/>
         </many-to-one>
-        <many-to-one name="user" class="com.ztc.shop.model.User" >
+        <many-to-one name="user" class="com.ztc.shop.model.User" fetch="join">
             <column name="uid"/>
         </many-to-one>
         <set name="sorderSet" lazy="true" fetch="join" inverse="true" cascade="all" >
